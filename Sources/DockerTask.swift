@@ -45,7 +45,7 @@ public struct DockerTask {
     public static func run(options commandOptions:[String]?, imageName:String, commandArgs:[String]) throws -> (output: String, error: String, exitCode: Int32) {
         let instance = DockerTask(command:"run", commandOptions:commandOptions, imageName:imageName, commandArgs:commandArgs)
         if let options = commandOptions {
-            if options.contains("-n") || options.contains("--name") {
+            if options.contains("--name") {
                 instance.deleteExistingContainer()
             }
         }
