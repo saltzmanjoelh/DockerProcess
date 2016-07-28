@@ -12,19 +12,14 @@ class DockerTaskTests: XCTestCase {
 //    }
     
     func testContainerNameOption() {
-        let name = UUID()
+        let name = String(UUID())
         let command = ["whoami"]
+
+        let result = DockerTask(command:"run", commandOptions:["--name", name, "--rm"], imageName:imageName, commandArgs:command).launch()
         
-        do {
-            let result = try DockerTask.run(options: ["--name", String(name)], imageName: imageName, commandArgs:command)
-            
-            XCTAssertEqual(result.exitCode, 0)
-            XCTAssertEqual(result.error, "")
-            XCTAssertNotNil(result.output)
-            
-        }catch let e {
-            XCTFail("\(e)")
-        }
+        XCTAssertEqual(result.exitCode, 0)
+        XCTAssertNil(result.error)
+        XCTAssertNotNil(result.output)
         
         
     }
@@ -33,65 +28,35 @@ class DockerTaskTests: XCTestCase {
         let range = containerName.index(containerName.endIndex, offsetBy: -2)..<containerName.endIndex
         containerName.removeSubrange(range)
         
-        do{
-            //don't use run to create the existing container, .run with delete it
-            try DockerTask(command:"run", commandOptions:["--name", containerName], imageName:imageName, commandArgs:command).launch()
-            
-            //Now when we create it, the existing one should be deleted
-            let result = try DockerTask.run(options: ["--name", containerName], imageName: imageName, commandArgs:command)
-            
-            XCTAssertEqual(result.exitCode, 0)
-            XCTAssertEqual(result.error, "")
-            XCTAssertNotNil(result.output)
-        }catch let e {
-            XCTFail("\(e)")
-        }
+        //create the container
+        DockerTask(command:"run", commandOptions:["--name", containerName], imageName:imageName, commandArgs:command).launch(silenceOutput: true)
+        let creationResult = DockerTask(command:"ps", commandOptions:["-a"]).launch(silenceOutput: true)
+        XCTAssertNotNil(creationResult.output)
+        XCTAssertNotNil(creationResult.output!.range(of: containerName))
+        
+        
+        //delete the container
+        DockerTask(command:"rm", commandOptions:[containerName]).launch(silenceOutput: true)
+        //check if it exists
+        let result = DockerTask(command:"ps", commandOptions:["-a"]).launch(silenceOutput: true)
+        
+        XCTAssertEqual(result.exitCode, 0)
+        XCTAssertNil(result.error)
+        XCTAssertNotNil(result.output)
+        XCTAssertNil(result.output!.range(of: containerName))
     }
     
     func testDoesRunInDocker(){
-        let result = runTask(launchPath: "/bin/hostname", launchArguments: nil, environment: nil)
-        let osxHostName = result.output.trimmingCharacters(in:NSMutableCharacterSet.newline() as CharacterSet)
-        do {
-            let answer = "different hostname"
-            let hostNameCommand = "[ `hostname` != \(osxHostName) ] && echo \"\(answer)\""
-            let linuxResult = try DockerTask.run(options: ["--name", String(UUID()), "--rm"], imageName: imageName, commandArgs: ["/bin/bash", "-c", hostNameCommand])
-            
-            XCTAssertEqual(linuxResult.output.trimmingCharacters(in:NSMutableCharacterSet.newline() as CharacterSet), answer)
-            XCTAssertEqual(linuxResult.exitCode, 0)
-        }catch let e{
-            print("Exception: \(e)")
-        }
-    }
-
-    private func runTask(launchPath:String, launchArguments:[String]? = nil, environment:[String:String]? = nil) -> (output: String, error: String, exitCode: Int32) {
+        let macHostname = Task.runTask(launchPath:"/bin/hostname", arguments: nil).output?.trimmingCharacters(in:NSMutableCharacterSet.newline() as CharacterSet)
+        let name = String(UUID())
+        let hostNameCommand = "if [ `hostname` == \(name) ]; then echo \(name); fi"
         
-        let task = Task()
-        task.launchPath = launchPath
-        if environment != nil {
-            task.environment = environment
-        }
-        
-        let outputPipe = Pipe()
-        task.standardOutput = outputPipe
-        
-        let errorPipe = Pipe()
-        task.standardError = errorPipe
-        
-        task.launch()
-        
-        var output = String()
-        var error = String()
-        while(task.isRunning){
-            if let outputString = String(data:outputPipe.fileHandleForReading.availableData, encoding:String.Encoding.utf8) {
-                print("\(outputString)")
-                output += outputString
-            }
-            if let errorString = String(data:errorPipe.fileHandleForReading.availableData, encoding:String.Encoding.utf8) {
-                print("Error: \(errorString)")
-                error += errorString
-            }
-        }
-        return (output, error, task.terminationStatus)
+        let linuxResult = DockerTask(command: "run", commandOptions: ["--name", name, "--rm", "--hostname", name], imageName: imageName, commandArgs: ["/bin/bash", "-c", hostNameCommand]).launch()
+    
+        let linuxHostname = linuxResult.output?.trimmingCharacters(in:NSMutableCharacterSet.newline() as CharacterSet)
+        XCTAssertEqual(linuxHostname, name)
+        XCTAssertNotEqual(linuxHostname, macHostname)
+        XCTAssertEqual(linuxResult.exitCode, 0)
     }
     
     static var allTests : [(String, (DockerTaskTests) -> () throws -> Void)] {
