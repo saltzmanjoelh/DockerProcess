@@ -133,6 +133,7 @@
 			buildPhases = (
 				CompilePhase_DockerTask /* Sources */,
 				"___LinkPhase_DockerTask" /* Frameworks */,
+				380724451D47BA33008354D7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -186,6 +187,22 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		380724451D47BA33008354D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#copy the built product into the source dir so that we have something to work with when testing with PreBuild target\nif [ -d \"${SOURCE_ROOT}/../XcodeLinuxBridge/${FULL_PRODUCT_NAME}\" ]; then rm -R \"${SOURCE_ROOT}/../XcodeLinuxBridge/${FULL_PRODUCT_NAME}\"; fi;\ncp -R \"${CONFIGURATION_BUILD_DIR}/${FULL_PRODUCT_NAME}\" \"${SOURCE_ROOT}/../XcodeLinuxBridge/${FULL_PRODUCT_NAME}\"\nif [ -d \"${SOURCE_ROOT}/../XcodeLinuxBridge/${FULL_PRODUCT_NAME}\" ]; then rm -R \"${SOURCE_ROOT}/../XcodeLinuxBridge/Example/${FULL_PRODUCT_NAME}\"; fi;\ncp -R \"${CONFIGURATION_BUILD_DIR}/${FULL_PRODUCT_NAME}\" \"${SOURCE_ROOT}/../XcodeLinuxBridge/Example/${FULL_PRODUCT_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CompilePhase_DockerTask /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -221,6 +238,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = DockerTask.xcodeproj/DockerTask_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -249,6 +267,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = DockerTask.xcodeproj/DockerTask_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";

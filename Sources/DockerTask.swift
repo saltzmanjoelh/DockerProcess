@@ -1,6 +1,6 @@
 import Foundation
 
-enum DockerTaskException: ErrorProtocol{
+enum DockerTaskException: ErrorProtocol {
     case invalidConfiguration(message:String)
     var description : String {
         get {
@@ -37,7 +37,7 @@ public struct DockerTask {
     }
     public func pullArguments() throws -> [String]  {
         guard let image = imageName else {
-            throw DockerTaskException.invalidConfiguration(message:"imageName was not set.")
+            throw DockerTaskException.invalidConfiguration(message:"You must set the imageName if you are going to pull")
         }
         return ["pull", image]
     }
@@ -55,12 +55,19 @@ public struct DockerTask {
     @discardableResult
     public func launch() throws -> (output: String, error: String, exitCode: Int32) {
         if imageName != nil {
-            Task.launchedTask(withLaunchPath: launchPath, arguments: try pullArguments())
+            //TODO: silence output
+            let pullTask = Task()
+            pullTask.launchPath = launchPath
+            pullTask.arguments = try pullArguments()
+            pullTask.standardOutput = nil
+            pullTask.standardError = nil
+            pullTask.launch()
         }
         
         let task = Task()
         task.launchPath = launchPath
         task.arguments = launchArguments
+//        print("DockerTask Launching:\n\(task.launchPath!) \(task.arguments!.joined(separator: " "))")
         
         let outputPipe = Pipe()
         task.standardOutput = outputPipe
@@ -72,16 +79,36 @@ public struct DockerTask {
         
         var output = String()
         var error = String()
+        
+        let read = { (pipe:Pipe, toEndOfFile:Bool) -> String? in
+            let fileHandle = pipe.fileHandleForReading
+            guard let outputString = toEndOfFile ? String(data:fileHandle.readDataToEndOfFile(), encoding:String.Encoding.utf8) : String(data:fileHandle.availableData, encoding:String.Encoding.utf8) else {
+                return nil
+            }
+            if outputString.characters.count == 0 {
+                return nil
+            }
+            for string in outputString.components(separatedBy: "\n") {
+                print(string)
+            }
+            return outputString
+        }
         while(task.isRunning){
-            if let outputString = String(data:outputPipe.fileHandleForReading.availableData, encoding:String.Encoding.utf8) {
-                print("\(outputString)")
+            if let outputString = read(outputPipe, false) {
                 output += outputString
             }
-            if let errorString = String(data:errorPipe.fileHandleForReading.availableData, encoding:String.Encoding.utf8) {
-                print("Error: \(errorString)")
+            if let errorString = read(errorPipe, false) {
                 error += errorString
             }
         }
+        if let outputString = read(outputPipe, true) {
+            output += outputString
+        }
+        if let errorString = read(errorPipe, true) {
+            error += errorString
+        }
+        
+        
         
         return (output, error, task.terminationStatus)
     }

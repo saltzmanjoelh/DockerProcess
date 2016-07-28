@@ -63,7 +63,7 @@ class DockerTaskTests: XCTestCase {
         }
     }
 
-    private func runTask(launchPath:String, launchArguments:[String]?, environment:[String:String]?) -> (output: String, error: String, exitCode: Int32) {
+    private func runTask(launchPath:String, launchArguments:[String]? = nil, environment:[String:String]? = nil) -> (output: String, error: String, exitCode: Int32) {
         
         let task = Task()
         task.launchPath = launchPath
@@ -96,7 +96,7 @@ class DockerTaskTests: XCTestCase {
     
     static var allTests : [(String, (DockerTaskTests) -> () throws -> Void)] {
         return [
-            ("testPassingOnLinux", testPassingOnLinux) //We only include these tests in allTests for now. It's the only tests that we end up running in Linux
+            ("testDoesRunInDocker", testDoesRunInDocker) //We only include these tests in allTests for now. It's the only tests that we end up running in Linux
         ]
     }
 }
