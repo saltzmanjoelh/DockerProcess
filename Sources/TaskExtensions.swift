@@ -31,6 +31,7 @@ extension Task {
         
         let read = { (pipe:Pipe, toEndOfFile:Bool) -> String? in
             let fileHandle = pipe.fileHandleForReading
+            //TODO: add timeout?
             guard let outputString = toEndOfFile ? String(data:fileHandle.readDataToEndOfFile(), encoding:String.Encoding.utf8) : String(data:fileHandle.availableData, encoding:String.Encoding.utf8) else {
                 return nil
             }

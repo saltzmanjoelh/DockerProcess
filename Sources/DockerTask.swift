@@ -58,16 +58,18 @@ public struct DockerTask {
     
     @discardableResult
     public func launch(silenceOutput:Bool = false) -> (output:String?, error:String?, exitCode:Int32) {
-        //TODO: make sure that the image has been pulled
-        
-//        if imageName != nil {
-//            let pullTask = Task()
-//            pullTask.launchPath = launchPath
-//            pullTask.arguments = try pullArguments()
-//            pullTask.standardOutput = nil
-//            pullTask.standardError = nil
-//            pullTask.launch()
-//        }
+        //Make sure that the image has been pulled first. Otherwise, the error output gets filled with "Unable to find image locally..."
+        if let image = imageName {
+            let imagesResult = DockerTask(command:"images", commandOptions:["-a"]).launch(silenceOutput: true)
+            if let output = imagesResult.output {
+                if output.components(separatedBy: "\n").filter({ (line:String) -> Bool in
+                    return line.hasPrefix(image)
+                }).count == 0 {
+                    DockerTask(command: "pull", commandOptions: [image]).launch()
+                }
+                
+            }
+        }
         
 //        print("DockerTask Launching:\n\(launchPath) \(launchArguments.joined(separator: " "))")
         
