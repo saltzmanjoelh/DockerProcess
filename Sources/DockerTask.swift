@@ -24,7 +24,7 @@ public struct DockerTask {
     public let commandArgs: [String]?// ["/bin/bash", "-c", "echo something"]
     public var shouldSilenceOutput = false
     
-    init(command:String, commandOptions:[String]? = nil, imageName:String? = nil, commandArgs:[String]? = nil) {
+    public init(command:String, commandOptions:[String]? = nil, imageName:String? = nil, commandArgs:[String]? = nil) {
         self.command = command
         self.commandOptions = commandOptions
         self.imageName = imageName

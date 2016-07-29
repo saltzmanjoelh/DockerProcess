@@ -12,6 +12,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>38F4ED8D1D4A97B7004D7D21</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>______Target_DockerTask</key>
 		<dict>
 			<key>primary</key>
