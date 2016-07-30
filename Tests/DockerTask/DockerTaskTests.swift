@@ -1,5 +1,7 @@
 import XCTest
+import TaskExtension
 @testable import DockerTask
+
 
 class DockerTaskTests: XCTestCase {
     //let containerName = ProcessInfo.processInfo.environment["DOCKER_CONTAINER_NAME"] ?? ProcessInfo.processInfo.environment["PROJECT"]
@@ -47,7 +49,7 @@ class DockerTaskTests: XCTestCase {
     }
     
     func testDoesRunInDocker(){
-        let macHostname = Task.runTask(launchPath:"/bin/hostname", arguments: nil).output?.trimmingCharacters(in:NSMutableCharacterSet.newline() as CharacterSet)
+        let macHostname = Task.run(launchPath:"/bin/hostname", arguments: nil).output?.trimmingCharacters(in:NSMutableCharacterSet.newline() as CharacterSet)
         let name = String(UUID())
         let hostNameCommand = "if [ `hostname` == \(name) ]; then echo \(name); fi"
         

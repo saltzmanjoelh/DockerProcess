@@ -1,4 +1,5 @@
 import Foundation
+import TaskExtension
 
 public enum DockerTaskException: ErrorProtocol {
     case invalidConfiguration(message:String)
@@ -73,6 +74,6 @@ public struct DockerTask {
         
 //        print("DockerTask Launching:\n\(launchPath) \(launchArguments.joined(separator: " "))")
         
-        return Task.runTask(launchPath:launchPath, arguments:launchArguments, silenceOutput:silenceOutput)
+        return Task.run(launchPath:launchPath, arguments:launchArguments, silenceOutput:silenceOutput)
     }
 }
