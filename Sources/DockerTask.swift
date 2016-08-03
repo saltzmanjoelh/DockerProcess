@@ -1,7 +1,7 @@
 import Foundation
 import TaskExtension
 
-public enum DockerTaskException: ErrorProtocol {
+public enum DockerTaskException: Error {
     case invalidConfiguration(message:String)
     var description : String {
         get {
