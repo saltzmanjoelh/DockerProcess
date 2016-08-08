@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		_LinkFileRef_DockerTask_via_DockerTaskTestSuite /* DockerTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_DockerTask" /* DockerTask.framework */; };
+		_LinkFileRef_TaskExtension_via_DockerTask /* TaskExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TaskExtension" /* TaskExtension.framework */; };
+		_LinkFileRef_TaskExtension_via_DockerTaskTestSuite /* TaskExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TaskExtension" /* TaskExtension.framework */; };
+		"__src_cc_ref_Packages/TaskExtension-1.0.4/Sources/TaskExtension.swift" /* TaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/TaskExtension-1.0.4/Sources/TaskExtension.swift" /* TaskExtension.swift */; };
 		__src_cc_ref_Sources/DockerTask.swift /* DockerTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/DockerTask.swift /* DockerTask.swift */; };
 		__src_cc_ref_Tests/DockerTask/DockerTaskTests.swift /* DockerTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/DockerTask/DockerTaskTests.swift /* DockerTaskTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		38C04F431D4536CE004905F8 /* PBXContainerItemProxy */ = {
+		3879576B1D5645A600152708 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_TaskExtension";
+			remoteInfo = TaskExtension;
+		};
+		3879576C1D5645A600152708 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
@@ -23,14 +33,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		__PBXFileRef_DockerTask.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Project.xcconfig; path = DockerTask.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
-		__PBXFileRef_DockerTaskTestSuite_Info.plist /* DockerTaskTestSuite_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = DockerTaskTestSuite_Info.plist; path = DockerTask.xcodeproj/DockerTaskTestSuite_Info.plist; sourceTree = SOURCE_ROOT; };
-		__PBXFileRef_DockerTask_Info.plist /* DockerTask_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = DockerTask_Info.plist; path = DockerTask.xcodeproj/DockerTask_Info.plist; sourceTree = SOURCE_ROOT; };
+		__PBXFileRef_DockerTask.xcodeproj/Configs/Project.xcconfig /* DockerTask.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DockerTask.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
+		__PBXFileRef_DockerTaskTestSuite_Info.plist /* DockerTask.xcodeproj/DockerTaskTestSuite_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DockerTask.xcodeproj/DockerTaskTestSuite_Info.plist; sourceTree = SOURCE_ROOT; };
+		__PBXFileRef_DockerTask_Info.plist /* DockerTask.xcodeproj/DockerTask_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DockerTask.xcodeproj/DockerTask_Info.plist; sourceTree = SOURCE_ROOT; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/TaskExtension-1.0.4/Sources/TaskExtension.swift" /* TaskExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskExtension.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/DockerTask.swift /* DockerTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerTask.swift; sourceTree = "<group>"; };
+		__PBXFileRef_TaskExtension_Info.plist /* DockerTask.xcodeproj/TaskExtension_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DockerTask.xcodeproj/TaskExtension_Info.plist; sourceTree = SOURCE_ROOT; };
 		__PBXFileRef_Tests/DockerTask/DockerTaskTests.swift /* DockerTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerTaskTests.swift; sourceTree = "<group>"; };
 		"_____Product_DockerTask" /* DockerTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DockerTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_DockerTaskTestSuite" /* DockerTaskTestSuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = DockerTaskTestSuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_DockerTaskTestSuite" /* RelativePath(_impl: Basic.(PathImpl in _F37600050464D58680C1E5753557C388)(string: "DockerTaskTestSuite.xctest")) */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RelativePath(_impl: Basic.(PathImpl in _F37600050464D58680C1E5753557C388)(string: \"DockerTaskTestSuite.xctest\"))"; path = DockerTaskTestSuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_TaskExtension" /* TaskExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TaskExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				_LinkFileRef_TaskExtension_via_DockerTask /* TaskExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,17 +59,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				_LinkFileRef_TaskExtension_via_DockerTaskTestSuite /* TaskExtension.framework in Frameworks */,
 				_LinkFileRef_DockerTask_via_DockerTaskTestSuite /* DockerTask.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_TaskExtension" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		Dependencies_ /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				"_______Group_TaskExtension" /* TaskExtension */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
 		TestProducts_ /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				"_____Product_DockerTaskTestSuite" /* DockerTaskTestSuite.xctest */,
+				"_____Product_DockerTaskTestSuite" /* RelativePath(_impl: Basic.(PathImpl in _F37600050464D58680C1E5753557C388)(string: "DockerTaskTestSuite.xctest")) */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -66,6 +96,7 @@
 				__PBXFileRef_Package.swift /* Package.swift */,
 				"_____Configs_" /* Configs */,
 				"_____Sources_" /* Sources */,
+				Dependencies_ /* Dependencies */,
 				"_______Tests_" /* Tests */,
 				"____Products_" /* Products */,
 			);
@@ -75,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				TestProducts_ /* Tests */,
+				"_____Product_TaskExtension" /* TaskExtension.framework */,
 				"_____Product_DockerTask" /* DockerTask.framework */,
 			);
 			name = Products;
@@ -83,7 +115,7 @@
 		"_____Configs_" /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				__PBXFileRef_DockerTask.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */,
+				__PBXFileRef_DockerTask.xcodeproj/Configs/Project.xcconfig /* DockerTask.xcodeproj/Configs/Project.xcconfig */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -100,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Sources/DockerTask.swift /* DockerTask.swift */,
-				__PBXFileRef_DockerTask_Info.plist /* DockerTask_Info.plist */,
+				__PBXFileRef_DockerTask_Info.plist /* DockerTask.xcodeproj/DockerTask_Info.plist */,
 			);
 			name = DockerTask;
 			path = Sources;
@@ -110,10 +142,20 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Tests/DockerTask/DockerTaskTests.swift /* DockerTaskTests.swift */,
-				__PBXFileRef_DockerTaskTestSuite_Info.plist /* DockerTaskTestSuite_Info.plist */,
+				__PBXFileRef_DockerTaskTestSuite_Info.plist /* DockerTask.xcodeproj/DockerTaskTestSuite_Info.plist */,
 			);
 			name = DockerTaskTestSuite;
 			path = Tests/DockerTask;
+			sourceTree = "<group>";
+		};
+		"_______Group_TaskExtension" /* TaskExtension */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/TaskExtension-1.0.4/Sources/TaskExtension.swift" /* TaskExtension.swift */,
+				__PBXFileRef_TaskExtension_Info.plist /* DockerTask.xcodeproj/TaskExtension_Info.plist */,
+			);
+			name = TaskExtension;
+			path = "Packages/TaskExtension-1.0.4/Sources";
 			sourceTree = "<group>";
 		};
 		"_______Tests_" /* Tests */ = {
@@ -127,19 +169,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		38F4EDD11D4C90EF004D7D21 /* FetchPackages */ = {
+		CC16101B1D57B16C00C77C99 /* ExternalBuild */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "xcrun swift package fetch";
-			buildConfigurationList = 38F4EDD21D4C90EF004D7D21 /* Build configuration list for PBXLegacyTarget "FetchPackages" */;
+			buildArgumentsString = "sh ExternalBuild.sh";
+			buildConfigurationList = CC16101C1D57B16C00C77C99 /* Build configuration list for PBXLegacyTarget "ExternalBuild" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/env;
-			buildWorkingDirectory = "";
+			buildWorkingDirectory = /Users/asdf/Sites/Linux/DockerTask;
 			dependencies = (
 			);
-			name = FetchPackages;
+			name = ExternalBuild;
 			passBuildSettingsInEnvironment = 1;
-			productName = FetchPackages;
+			productName = ExternalBuild;
 		};
 /* End PBXLegacyTarget section */
 
@@ -150,11 +192,11 @@
 			buildPhases = (
 				CompilePhase_DockerTask /* Sources */,
 				"___LinkPhase_DockerTask" /* Frameworks */,
-				380724451D47BA33008354D7 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				__Dependency_TaskExtension /* PBXTargetDependency */,
 			);
 			name = DockerTask;
 			productName = DockerTask;
@@ -171,12 +213,29 @@
 			buildRules = (
 			);
 			dependencies = (
+				__Dependency_TaskExtension /* PBXTargetDependency */,
 				__Dependency_DockerTask /* PBXTargetDependency */,
 			);
 			name = DockerTaskTestSuite;
 			productName = DockerTaskTestSuite;
-			productReference = "_____Product_DockerTaskTestSuite" /* DockerTaskTestSuite.xctest */;
+			productReference = "_____Product_DockerTaskTestSuite" /* RelativePath(_impl: Basic.(PathImpl in _F37600050464D58680C1E5753557C388)(string: "DockerTaskTestSuite.xctest")) */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"______Target_TaskExtension" /* TaskExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_TaskExtension" /* Build configuration list for PBXNativeTarget "TaskExtension" */;
+			buildPhases = (
+				CompilePhase_TaskExtension /* Sources */,
+				"___LinkPhase_TaskExtension" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TaskExtension;
+			productName = TaskExtension;
+			productReference = "_____Product_TaskExtension" /* TaskExtension.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -186,10 +245,8 @@
 			attributes = {
 				LastUpgradeCheck = 9999;
 				TargetAttributes = {
-					38F4EDD11D4C90EF004D7D21 = {
+					CC16101B1D57B16C00C77C99 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = A43A74F4MB;
-						DevelopmentTeamName = "Joel Saltzman (Personal Team)";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -206,28 +263,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				38F4EDD11D4C90EF004D7D21 /* FetchPackages */,
+				"______Target_TaskExtension" /* TaskExtension */,
 				"______Target_DockerTask" /* DockerTask */,
 				"______Target_DockerTaskTestSuite" /* DockerTaskTestSuite */,
+				CC16101B1D57B16C00C77C99 /* ExternalBuild */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		380724451D47BA33008354D7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#copy the built product into the source dir so that we have something to work with when testing with PreBuild target\n#if [ -d \"${SOURCE_ROOT}/../XcodeLinuxBridge/${FULL_PRODUCT_NAME}\" ]; then rm -R \"${SOURCE_ROOT}/../XcodeLinuxBridge/${FULL_PRODUCT_NAME}\"; fi;\n#cp -R \"${CONFIGURATION_BUILD_DIR}/${FULL_PRODUCT_NAME}\" \"${SOURCE_ROOT}/../XcodeLinuxBridge/${FULL_PRODUCT_NAME}\"\n#if [ -d \"${SOURCE_ROOT}/../XcodeLinuxBridge/${FULL_PRODUCT_NAME}\" ]; then rm -R \"${SOURCE_ROOT}/../XcodeLinuxBridge/Example/${FULL_PRODUCT_NAME}\"; fi;\n#cp -R \"${CONFIGURATION_BUILD_DIR}/${FULL_PRODUCT_NAME}\" \"${SOURCE_ROOT}/../XcodeLinuxBridge/Example/${FULL_PRODUCT_NAME}\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CompilePhase_DockerTask /* Sources */ = {
@@ -246,18 +288,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CompilePhase_TaskExtension /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/TaskExtension-1.0.4/Sources/TaskExtension.swift" /* TaskExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		__Dependency_DockerTask /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_DockerTask" /* DockerTask */;
-			targetProxy = 38C04F431D4536CE004905F8 /* PBXContainerItemProxy */;
+			targetProxy = 3879576C1D5645A600152708 /* PBXContainerItemProxy */;
+		};
+		__Dependency_TaskExtension /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_TaskExtension" /* TaskExtension */;
+			targetProxy = 3879576B1D5645A600152708 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		38F4EDD31D4C90EF004D7D21 /* Debug */ = {
+		CC16101D1D57B16C00C77C99 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -272,8 +327,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -297,6 +354,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -304,7 +362,7 @@
 			};
 			name = Debug;
 		};
-		38F4EDD41D4C90EF004D7D21 /* Release */ = {
+		CC16101E1D57B16C00C77C99 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -319,8 +377,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -336,6 +396,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				NEW_SETTING = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -349,9 +410,9 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = DockerTask.xcodeproj/DockerTask_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = DockerTask;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SWIFT_VERSION = 3.0;
@@ -371,6 +432,22 @@
 			};
 			name = Release;
 		};
+		_ReleaseConf_TaskExtension /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = DockerTask.xcodeproj/TaskExtension_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = TaskExtension;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		"___DebugConf_DockerTask" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -378,9 +455,9 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = DockerTask.xcodeproj/DockerTask_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = DockerTask;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -402,16 +479,33 @@
 			};
 			name = Debug;
 		};
+		"___DebugConf_TaskExtension" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = DockerTask.xcodeproj/TaskExtension_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = TaskExtension;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
 		"_____Release_" /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = __PBXFileRef_DockerTask.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */;
+			baseConfigurationReference = __PBXFileRef_DockerTask.xcodeproj/Configs/Project.xcconfig /* DockerTask.xcodeproj/Configs/Project.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		"_______Debug_" /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = __PBXFileRef_DockerTask.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */;
+			baseConfigurationReference = __PBXFileRef_DockerTask.xcodeproj/Configs/Project.xcconfig /* DockerTask.xcodeproj/Configs/Project.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
@@ -419,13 +513,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		38F4EDD21D4C90EF004D7D21 /* Build configuration list for PBXLegacyTarget "FetchPackages" */ = {
+		CC16101C1D57B16C00C77C99 /* Build configuration list for PBXLegacyTarget "ExternalBuild" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				38F4EDD31D4C90EF004D7D21 /* Debug */,
-				38F4EDD41D4C90EF004D7D21 /* Release */,
+				CC16101D1D57B16C00C77C99 /* Debug */,
+				CC16101E1D57B16C00C77C99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		"___RootConfs_" /* Build configuration list for PBXProject "DockerTask" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +545,15 @@
 			buildConfigurations = (
 				"___DebugConf_DockerTaskTestSuite" /* Debug */,
 				_ReleaseConf_DockerTaskTestSuite /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_TaskExtension" /* Build configuration list for PBXNativeTarget "TaskExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_TaskExtension" /* Debug */,
+				_ReleaseConf_TaskExtension /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
