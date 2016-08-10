@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CCEF59D11D59470800573AF3 /* DockerToolboxTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF59D01D59470800573AF3 /* DockerToolboxTask.swift */; };
+		CCEF59D31D594B7400573AF3 /* DockerForMacTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF59D21D594B7400573AF3 /* DockerForMacTask.swift */; };
 		_LinkFileRef_DockerTask_via_DockerTaskTestSuite /* DockerTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_DockerTask" /* DockerTask.framework */; };
 		_LinkFileRef_TaskExtension_via_DockerTask /* TaskExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TaskExtension" /* TaskExtension.framework */; };
 		_LinkFileRef_TaskExtension_via_DockerTaskTestSuite /* TaskExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TaskExtension" /* TaskExtension.framework */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CCEF59D01D59470800573AF3 /* DockerToolboxTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockerToolboxTask.swift; sourceTree = "<group>"; };
+		CCEF59D21D594B7400573AF3 /* DockerForMacTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockerForMacTask.swift; sourceTree = "<group>"; };
 		__PBXFileRef_DockerTask.xcodeproj/Configs/Project.xcconfig /* DockerTask.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DockerTask.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
 		__PBXFileRef_DockerTaskTestSuite_Info.plist /* DockerTask.xcodeproj/DockerTaskTestSuite_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DockerTask.xcodeproj/DockerTaskTestSuite_Info.plist; sourceTree = SOURCE_ROOT; };
 		__PBXFileRef_DockerTask_Info.plist /* DockerTask.xcodeproj/DockerTask_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DockerTask.xcodeproj/DockerTask_Info.plist; sourceTree = SOURCE_ROOT; };
@@ -132,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Sources/DockerTask.swift /* DockerTask.swift */,
+				CCEF59D21D594B7400573AF3 /* DockerForMacTask.swift */,
+				CCEF59D01D59470800573AF3 /* DockerToolboxTask.swift */,
 				__PBXFileRef_DockerTask_Info.plist /* DockerTask.xcodeproj/DockerTask_Info.plist */,
 			);
 			name = DockerTask;
@@ -276,6 +282,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				CCEF59D11D59470800573AF3 /* DockerToolboxTask.swift in Sources */,
+				CCEF59D31D594B7400573AF3 /* DockerForMacTask.swift in Sources */,
 				__src_cc_ref_Sources/DockerTask.swift /* DockerTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

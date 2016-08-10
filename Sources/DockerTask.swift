@@ -1,28 +1,72 @@
 import Foundation
 import TaskExtension
-//TODO: split toolbox task out
-//TODO: protocols?
 
-public enum DockerTaskException: Error {
+public enum DockerTaskError: Error {
     case invalidConfiguration(message:String)
-    case toolbox(message:String)
     
     var description : String {
         get {
             switch (self) {
             case let .invalidConfiguration(message): return message
-            case let .toolbox(message): return message
             }
         }
     }
 }
-//public struct DockerTaskResult {
-//    public let output : String
-//    public let error : String
-//    public let exitCode : Int32
-//}
+public typealias DockerTaskResult = (output:String?, error:String?, exitCode:Int32)
 
-public struct DockerTask {
+public protocol DockerTask {
+    var launchPath:String { get set }
+    var command:String? { get set }
+    var commandOptions:[String]? { get set }
+    var imageName:String? { get set }
+    var commandArgs:[String]? { get set }
+    
+    init()
+    init(command:String, commandOptions:[String]?)//used with non-image related actions like "docker images -a"
+    init(command:String, commandOptions:[String]?, imageName:String?, commandArgs:[String]?)
+    func shouldPull(image:String) -> Bool
+    func launch(silenceOutput:Bool) -> DockerTaskResult
+}
+extension DockerTask {
+    public func shouldPull(image:String) -> Bool {
+        let imagesResult = self.dynamicType.init(command:"images", commandOptions:["-a"], commandArgs:nil).launch(silenceOutput: true)
+        var images = [String]()
+        if let output = imagesResult.output {
+            images = output.components(separatedBy: "\n").filter{ $0.hasPrefix(image) }
+        }
+        return images.count == 0
+    }
+    public init(command:String, commandOptions:[String]? = nil) {
+        self.init(command:command, commandOptions:commandOptions, imageName:nil, commandArgs:nil)
+    }
+    public init(command:String, commandOptions:[String]? = nil, imageName:String? = nil, commandArgs:[String]? = nil) {
+        self.init()
+        self.command = command
+        self.commandOptions = commandOptions
+        self.imageName = imageName
+        self.commandArgs = commandArgs
+    }
+    public var launchArguments: [String] {
+        get {
+            var arguments = [String]()
+            if let cmd = command {
+                arguments += [cmd]
+            }
+            if let options = commandOptions {
+                arguments += options
+            }
+            if let image = imageName{
+                arguments += [image]
+            }
+            if let args = commandArgs {
+                arguments += args
+            }
+            return arguments
+        }
+    }
+}
+/*
+public struct Docker1Task {
     public var launchPath = "/usr/local/bin/docker"
     public let command: String // run, exec, ps
     public let commandOptions: [String]?// --name
@@ -31,9 +75,16 @@ public struct DockerTask {
     public let commandArgs: [String]?// ["/bin/bash", "-c", "echo something"]
     public var shouldSilenceOutput = false
     
-    let machinePath = "/usr/local/bin/docker-machine"
-    let vBoxManagePath = "/Applications/VirtualBox.app/Contents/MacOS/VBoxManage"
-    let startupScript = "/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh"
+    public var machinePath : String {
+        get {
+            return URL(fileURLWithPath: launchPath).deletingPathExtension().path.appending("docker-machine")
+        }
+    }
+    public var vBoxManagePath : String {
+        get {
+            return URL(fileURLWithPath: launchPath).deletingPathExtension().path.appending("VBoxManage")
+        }
+    }
     
     public init(command:String, commandOptions:[String]? = nil, imageName:String? = nil, commandArgs:[String]? = nil) {
         self.command = command
@@ -80,9 +131,7 @@ public struct DockerTask {
     }
     
     func validateToolboxPaths() throws {
-        
-        //        let startupScript = "/Users/asdf/Sites/Linux/DockerTask/start.sh"
-        let files = [("Docker Machine", machinePath), ("VBoxManage", vBoxManagePath), ("Docker Startup Script", startupScript)]
+        let files = [("Docker Machine", machinePath), ("VBoxManage", vBoxManagePath)]
         for file in files {
             guard FileManager.default.fileExists(atPath: file.1) else {
                 throw DockerTaskException.toolbox(message: "\(file.0) is missing from path: \(file.1)")
@@ -111,6 +160,7 @@ public struct DockerTask {
         }
         if(!vmIsRunning()){
             try vmStart()
+            RunLoop.current.run(until: Date(timeIntervalSinceNow: TimeInterval(0.2)))//give it a sec to clean up
         }
         let command = "\(launchPath) \(launchArguments.joined(separator: " "))"
         let export = "export PATH=/usr/local/bin:$PATH"
@@ -118,7 +168,16 @@ public struct DockerTask {
         let args = ["/bin/bash", "-c", "\(export); \(environmentVars); \(command)"]
         
 //        print("DockerTask Launching:\n/usr/bin/env \(args.joined(separator: " "))")
-        return Task.run(launchPath:"/usr/bin/env", arguments: args, silenceOutput: false)
+        
+        let result = Task.run(launchPath:"/usr/bin/env", arguments: args, silenceOutput: false)
+        if let error = result.error {
+            if error.contains("Segmentation fault") {//docker 💩👖, try again
+                return result
+            }else{
+                return Task.run(launchPath:"/usr/bin/env", arguments: args, silenceOutput: false)//try again
+            }
+        }
+        return result
     }
     
     /*
@@ -161,3 +220,4 @@ public struct DockerTask {
 
     
 }
+*/
