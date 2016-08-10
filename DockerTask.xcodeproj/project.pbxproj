@@ -161,7 +161,7 @@
 				__PBXFileRef_TaskExtension_Info.plist /* DockerTask.xcodeproj/TaskExtension_Info.plist */,
 			);
 			name = TaskExtension;
-			path = "Packages/TaskExtension-1.0.4/Sources";
+			path = "Packages/TaskExtension-1.0.5/Sources";
 			sourceTree = "<group>";
 		};
 		"_______Tests_" /* Tests */ = {
