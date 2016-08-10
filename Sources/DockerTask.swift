@@ -111,6 +111,7 @@ public struct DockerTask {
         }
         if(!vmIsRunning()){
             try vmStart()
+            RunLoop.current.run(until: Date(timeIntervalSinceNow: TimeInterval(0.2)))//give it a sec to clean up
         }
         let command = "\(launchPath) \(launchArguments.joined(separator: " "))"
         let export = "export PATH=/usr/local/bin:$PATH"
@@ -118,7 +119,16 @@ public struct DockerTask {
         let args = ["/bin/bash", "-c", "\(export); \(environmentVars); \(command)"]
         
 //        print("DockerTask Launching:\n/usr/bin/env \(args.joined(separator: " "))")
-        return Task.run(launchPath:"/usr/bin/env", arguments: args, silenceOutput: false)
+        
+        let result = Task.run(launchPath:"/usr/bin/env", arguments: args, silenceOutput: false)
+        if let error = result.error {
+            if error.contains("Segmentation fault") {//docker 💩👖, try again
+                return result
+            }else{
+                return Task.run(launchPath:"/usr/bin/env", arguments: args, silenceOutput: false)//try again
+            }
+        }
+        return result
     }
     
     /*
