@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CC16101B1D57B16C00C77C99"
-               BuildableName = "ExternalBuild"
-               BlueprintName = "ExternalBuild"
+               BlueprintIdentifier = "______Target_TaskExtension"
+               BuildableName = "SynchronousTask.framework"
+               BlueprintName = "SynchronousTask"
                ReferencedContainer = "container:DockerTask.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CC16101B1D57B16C00C77C99"
-            BuildableName = "ExternalBuild"
-            BlueprintName = "ExternalBuild"
+            BlueprintIdentifier = "______Target_TaskExtension"
+            BuildableName = "SynchronousTask.framework"
+            BlueprintName = "SynchronousTask"
             ReferencedContainer = "container:DockerTask.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CC16101B1D57B16C00C77C99"
-            BuildableName = "ExternalBuild"
-            BlueprintName = "ExternalBuild"
+            BlueprintIdentifier = "______Target_TaskExtension"
+            BuildableName = "SynchronousTask.framework"
+            BlueprintName = "SynchronousTask"
             ReferencedContainer = "container:DockerTask.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

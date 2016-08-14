@@ -1,5 +1,5 @@
 import Foundation
-import TaskExtension
+import SynchronousTask
 
 public enum DockerTaskError: Error {
     case invalidConfiguration(message:String)

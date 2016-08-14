@@ -1,5 +1,5 @@
 import XCTest
-import TaskExtension
+import SynchronousTask
 @testable import DockerTask
 
 
@@ -17,7 +17,7 @@ class DockerTaskTests: XCTestCase {
     }
     override func tearDown() {
         RunLoop.current.run(until: Date(timeIntervalSinceNow: TimeInterval(0.2)))//give Docker a sec to cleanup
-        DockerToolboxTask(command:"rm", commandOptions:[containerName]).launch(silenceOutput: false)
+        DockerToolboxTask(command:"rm", commandOptions:[containerName]).launch(silenceOutput: true)
     }
     
     func containerNameOption(taskClass:DockerTask.Type) {
@@ -70,6 +70,17 @@ class DockerTaskTests: XCTestCase {
         XCTAssertNotEqual(linuxHostname, macHostname)
         XCTAssertEqual(linuxResult.exitCode, 0)
     }
+    
+    func doesRunBashCommand(taskClass:DockerTask.Type){
+        let bashCommand = "swift --version"
+        let commandArgs = ["/bin/bash", "-c", bashCommand]
+        
+        let result = DockerToolboxTask(command: "run", commandOptions:nil, imageName: imageName, commandArgs: commandArgs).launch(silenceOutput: false)
+        if let error = result.error, result.exitCode != 0 {
+            XCTFail("Error: \(error)")
+        }
+        XCTAssertNotNil(result.output)
+    }
 }
 
 class DockForMacTests : DockerTaskTests {
@@ -81,6 +92,9 @@ class DockForMacTests : DockerTaskTests {
     }
     func testDoesRunInDocker(){
         doesRunInDocker(taskClass:DockerForMacTask.self)
+    }
+    func testDoesRunBashCommand(){
+        doesRunBashCommand(taskClass:DockerForMacTask.self)
     }
 }
 
@@ -116,6 +130,19 @@ class DockToolboxTests : DockerTaskTests {
         
         XCTAssertFalse(task.vmIsRunning(name:"default"), "Machine should not be running")
     }
+    func testEnvironment() {
+        let task = DockerToolboxTask(command: "ps")
+        do{
+            try task.prepareVM()
+            
+            let environment = try task.environment()
+            
+            XCTAssertEqual(environment.count, 5, "There should have been 5 keys: \(environment)")
+        }catch let error {
+            XCTFail("Error: \(error)")
+        }
+        
+    }
     func testContainerNameOption() {
         containerNameOption(taskClass: DockerToolboxTask.self)
     }
@@ -124,5 +151,11 @@ class DockToolboxTests : DockerTaskTests {
     }
     func testDoesRunInDocker(){
         doesRunInDocker(taskClass: DockerToolboxTask.self)
+    }
+    func testDoesRunBashCommand(){
+        doesRunBashCommand(taskClass:DockerToolboxTask.self)
+    }
+    func testDoesStripQuotes(){
+        //Strip the quotes for the arg after -c
     }
 }

@@ -1,5 +1,5 @@
 import Foundation
-import TaskExtension
+import SynchronousTask
 
 //public struct DockerTaskResult {
 //    public let output : String
