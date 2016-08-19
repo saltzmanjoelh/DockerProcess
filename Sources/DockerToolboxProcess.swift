@@ -1,5 +1,5 @@
 import Foundation
-import SynchronousTask
+import SynchronousProcess
 
 public enum DockerToolboxError: Error {
     case missingFile(message:String)
@@ -19,7 +19,7 @@ public enum DockerToolboxError: Error {
     }
 }
 
-public struct DockerToolboxTask : DockerTask {
+public struct DockerToolboxProcess : DockerProcess {
     public var launchPath: String = "/usr/local/bin/docker"
     public var command: String? // run, exec, ps
     public var commandOptions: [String]?// --name
@@ -52,7 +52,7 @@ public struct DockerToolboxTask : DockerTask {
         }
     }
     func vmExists(name:String = "default") -> Bool {
-        let result = Task.run(launchPath:"/bin/bash", arguments: ["-c", "\(vBoxManagePath) list vms | grep \(name)"], silenceOutput: false)
+        let result = Process.run("/bin/bash", arguments: ["-c", "\(vBoxManagePath) list vms | grep \(name)"], silenceOutput: false)
         return result.output != nil && result.output!.contains(name)
     }
 //    func vmCreate(name:String = "default") {
@@ -67,16 +67,16 @@ public struct DockerToolboxTask : DockerTask {
 //        fi
 //    }
     func vmIsRunning(name:String = "default") -> Bool {
-        let result = Task.run(launchPath:"/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) status \(name)"], silenceOutput: false)
+        let result = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) status \(name)"], silenceOutput: false)
         return result.output != nil && result.output!.contains("Running")
     }
-    func vmStart(name:String = "default") -> DockerTaskResult {
-        return Task.run(launchPath:"/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) start default"], silenceOutput: false)
+    func vmStart(name:String = "default") -> DockerProcessResult {
+        return Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) start default"], silenceOutput: false)
     }
     func environment(silenceOutput:Bool = true) throws -> [String:String] {
         let export = "export PATH=/usr/local/bin:$PATH"
         let machine = "/usr/local/bin/docker-machine env --shell=bash default"
-        let result = Task.run(launchPath:"/usr/bin/env", arguments: ["/bin/bash", "-c", "\(export); \(machine)"], silenceOutput: silenceOutput)
+        let result = Process.run("/usr/bin/env", arguments: ["/bin/bash", "-c", "\(export); \(machine)"], silenceOutput: silenceOutput)
         RunLoop.current.run(until: Date(timeIntervalSinceNow: TimeInterval(0.2)))//give it a sec to clean up
         if let error = result.error {
             throw DockerToolboxError.badEnvironment(message: "Error getting environment: \(error)")
@@ -116,31 +116,31 @@ public struct DockerToolboxTask : DockerTask {
      Throws if we can't start default virtual machine
     */
     @discardableResult
-    public func launch(silenceOutput:Bool = false) -> DockerTaskResult {
+    public func launch(silenceOutput:Bool = false) -> DockerProcessResult {
     
-        print("DockerTask Launching:\n/usr/bin/env \(launchPath) \(launchArguments.joined(separator: " "))")
+        print("DockerProcess Launching:\n/usr/bin/env \(launchPath) \(launchArguments.joined(separator: " "))")
         
         do{
             try prepareVM()
         }catch _{
-            return DockerTaskResult(output:nil, error:nil, exitCode:-1)//trying to not have this func throw
+            return DockerProcessResult(output:nil, error:nil, exitCode:-1)//trying to not have this func throw
         }
         
-        let task = Task()
-        task.launchPath = launchPath
-        task.arguments = launchArguments
+        let process = Process()
+        process.launchPath = launchPath
+        process.arguments = launchArguments
         do{
-            task.environment = try environment(silenceOutput:silenceOutput)
+            process.environment = try environment(silenceOutput:silenceOutput)
         }catch let error {
-            return DockerTaskResult(output:nil, error:"\(error)", exitCode:-1)//trying to not have this func throw
+            return DockerProcessResult(output:nil, error:"\(error)", exitCode:-1)//trying to not have this func throw
         }
         
-        let result = task.run(silenceOutput: silenceOutput)
+        let result = process.run(silenceOutput)
 //        if let error = result.error {
 //            if error.contains("Segmentation fault") {//docker 💩👖, try again
 //                return result
 //            }else{
-//                return task.run(silenceOutput: false)//try again
+//                return process.run(silenceOutput: false)//try again
 //            }
 //        }
         return result

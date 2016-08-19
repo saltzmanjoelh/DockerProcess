@@ -1,7 +1,7 @@
 import Foundation
-import SynchronousTask
+import SynchronousProcess
 
-public enum DockerTaskError: Error {
+public enum DockerProcessError: Error {
     case invalidConfiguration(message:String)
     
     var description : String {
@@ -12,9 +12,9 @@ public enum DockerTaskError: Error {
         }
     }
 }
-public typealias DockerTaskResult = (output:String?, error:String?, exitCode:Int32)
+public typealias DockerProcessResult = (output:String?, error:String?, exitCode:Int32)
 
-public protocol DockerTask {
+public protocol DockerProcess {
     var launchPath:String { get set }
     var command:String? { get set }
     var commandOptions:[String]? { get set }
@@ -25,11 +25,11 @@ public protocol DockerTask {
     init(command:String, commandOptions:[String]?)//used with non-image related actions like "docker images -a"
     init(command:String, commandOptions:[String]?, imageName:String?, commandArgs:[String]?)
     func shouldPull(image:String) -> Bool
-    func launch(silenceOutput:Bool) -> DockerTaskResult
+    func launch(silenceOutput:Bool) -> DockerProcessResult
 }
-extension DockerTask {
+extension DockerProcess {
     public func shouldPull(image:String) -> Bool {
-        let imagesResult = self.dynamicType.init(command:"images", commandOptions:["-a"], commandArgs:nil).launch(silenceOutput: true)
+        let imagesResult = Self.init(command:"images", commandOptions:["-a"], commandArgs:nil).launch(silenceOutput: true)
         var images = [String]()
         if let output = imagesResult.output {
             images = output.components(separatedBy: "\n").filter{ $0.hasPrefix(image) }
@@ -66,7 +66,7 @@ extension DockerTask {
     }
 }
 /*
-public struct Docker1Task {
+public struct Docker1Process {
     public var launchPath = "/usr/local/bin/docker"
     public let command: String // run, exec, ps
     public let commandOptions: [String]?// --name
@@ -109,7 +109,7 @@ public struct Docker1Task {
         }
     }
     public func shouldPull(image:String) -> Bool {
-        let imagesResult = DockerTask(command:"images", commandOptions:["-a"]).launch(silenceOutput: true)
+        let imagesResult = DockerProcess(command:"images", commandOptions:["-a"]).launch(silenceOutput: true)
         var images = [String]()
         if let output = imagesResult.output {
             images = output.components(separatedBy: "\n").filter{ $0.hasPrefix(image) }
@@ -121,35 +121,35 @@ public struct Docker1Task {
         //Make sure that the image has been pulled first. Otherwise, the error output gets filled with "Unable to find image locally..."
         if let image = imageName {
             if shouldPull(image: image) {
-                DockerTask(command: "pull", commandOptions: [image]).launch()
+                DockerProcess(command: "pull", commandOptions: [image]).launch()
             }
         }
         
-        //        print("DockerTask Launching:\n\(launchPath) \(launchArguments.joined(separator: " "))")
+        //        print("DockerProcess Launching:\n\(launchPath) \(launchArguments.joined(separator: " "))")
         
-        return Task.run(launchPath:launchPath, arguments:launchArguments, silenceOutput:silenceOutput)
+        return Process.run(launchPath:launchPath, arguments:launchArguments, silenceOutput:silenceOutput)
     }
     
     func validateToolboxPaths() throws {
         let files = [("Docker Machine", machinePath), ("VBoxManage", vBoxManagePath)]
         for file in files {
             guard FileManager.default.fileExists(atPath: file.1) else {
-                throw DockerTaskException.toolbox(message: "\(file.0) is missing from path: \(file.1)")
+                throw DockerProcessException.toolbox(message: "\(file.0) is missing from path: \(file.1)")
             }
         }
     }
     func vmExists(name:String = "default") -> Bool {
-        let result = Task.run(launchPath:"/bin/bash", arguments: ["-c", "\(vBoxManagePath) list vms | grep \(name)"], silenceOutput: false)
+        let result = Process.run(launchPath:"/bin/bash", arguments: ["-c", "\(vBoxManagePath) list vms | grep \(name)"], silenceOutput: false)
         return result.output != nil && result.output!.contains(name)
     }
     func vmIsRunning(name:String = "default") -> Bool {
-        let result = Task.run(launchPath:"/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) status \(name)"], silenceOutput: false)
+        let result = Process.run(launchPath:"/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) status \(name)"], silenceOutput: false)
         return result.output != nil && result.output!.contains("Running")
     }
     func vmStart(name:String = "default") throws {
-        let result = Task.run(launchPath:"/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) start default"], silenceOutput: false)
+        let result = Process.run(launchPath:"/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) start default"], silenceOutput: false)
         guard result.output != nil else {
-            throw DockerTaskException.toolbox(message: "Failed to start default machine.\n\(result.error)")
+            throw DockerProcessException.toolbox(message: "Failed to start default machine.\n\(result.error)")
         }
     }
     
@@ -167,14 +167,14 @@ public struct Docker1Task {
         let environmentVars = "eval $(/usr/local/bin/docker-machine env --shell=bash default)"
         let args = ["/bin/bash", "-c", "\(export); \(environmentVars); \(command)"]
         
-//        print("DockerTask Launching:\n/usr/bin/env \(args.joined(separator: " "))")
+//        print("DockerProcess Launching:\n/usr/bin/env \(args.joined(separator: " "))")
         
-        let result = Task.run(launchPath:"/usr/bin/env", arguments: args, silenceOutput: false)
+        let result = Process.run(launchPath:"/usr/bin/env", arguments: args, silenceOutput: false)
         if let error = result.error {
             if error.contains("Segmentation fault") {//docker 💩👖, try again
                 return result
             }else{
-                return Task.run(launchPath:"/usr/bin/env", arguments: args, silenceOutput: false)//try again
+                return Process.run(launchPath:"/usr/bin/env", arguments: args, silenceOutput: false)//try again
             }
         }
         return result
