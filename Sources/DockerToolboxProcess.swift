@@ -70,7 +70,7 @@ public struct DockerToolboxProcess : DockerProcess {
         let result = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) status \(name)"], silenceOutput: false)
         return result.output != nil && result.output!.contains("Running")
     }
-    func vmStart(name:String = "default") -> DockerProcessResult {
+    func vmStart(name:String = "default") -> ProcessResult {
         return Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) start default"], silenceOutput: false)
     }
     func environment(silenceOutput:Bool = true) throws -> [String:String] {
@@ -116,14 +116,14 @@ public struct DockerToolboxProcess : DockerProcess {
      Throws if we can't start default virtual machine
     */
     @discardableResult
-    public func launch(silenceOutput:Bool = false) -> DockerProcessResult {
+    public func launch(silenceOutput:Bool = false) -> ProcessResult {
     
         print("DockerProcess Launching:\n/usr/bin/env \(launchPath) \(launchArguments.joined(separator: " "))")
         
         do{
             try prepareVM()
         }catch _{
-            return DockerProcessResult(output:nil, error:nil, exitCode:-1)//trying to not have this func throw
+            return ProcessResult(output:nil, error:nil, exitCode:-1)//trying to not have this func throw
         }
         
         let process = Process()
@@ -132,7 +132,7 @@ public struct DockerToolboxProcess : DockerProcess {
         do{
             process.environment = try environment(silenceOutput:silenceOutput)
         }catch let error {
-            return DockerProcessResult(output:nil, error:"\(error)", exitCode:-1)//trying to not have this func throw
+            return ProcessResult(output:nil, error:"\(error)", exitCode:-1)//trying to not have this func throw
         }
         
         let result = process.run(silenceOutput)

@@ -12,7 +12,6 @@ public enum DockerProcessError: Error {
         }
     }
 }
-public typealias DockerProcessResult = (output:String?, error:String?, exitCode:Int32)
 
 public protocol DockerProcess {
     var launchPath:String { get set }
@@ -25,7 +24,7 @@ public protocol DockerProcess {
     init(command:String, commandOptions:[String]?)//used with non-image related actions like "docker images -a"
     init(command:String, commandOptions:[String]?, imageName:String?, commandArgs:[String]?)
     func shouldPull(image:String) -> Bool
-    func launch(silenceOutput:Bool) -> DockerProcessResult
+    func launch(silenceOutput:Bool) -> ProcessResult
 }
 extension DockerProcess {
     public func shouldPull(image:String) -> Bool {

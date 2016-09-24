@@ -1,11 +1,6 @@
 import Foundation
 import SynchronousProcess
 
-//public struct DockerProcessResult {
-//    public let output : String
-//    public let error : String
-//    public let exitCode : Int32
-//}
 
 public struct DockerForMacProcess : DockerProcess {
     public var launchPath: String = "/usr/local/bin/docker"
@@ -21,7 +16,7 @@ public struct DockerForMacProcess : DockerProcess {
     }
     
     @discardableResult
-    public func launch(silenceOutput:Bool = false) -> DockerProcessResult {
+    public func launch(silenceOutput:Bool = false) -> ProcessResult {
         //Make sure that the image has been pulled first. Otherwise, the error output gets filled with "Unable to find image locally..."
         if let image = imageName {
             if shouldPull(image: image) {
