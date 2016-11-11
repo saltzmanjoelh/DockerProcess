@@ -31,6 +31,7 @@ public struct DockerToolboxProcess : DockerProcess {
     public init(){
         
     }
+    //Cannot connect to the Docker daemon. Is the docker daemon running on this host?
     
     public var machinePath : String {
         get {
@@ -55,17 +56,26 @@ public struct DockerToolboxProcess : DockerProcess {
         let result = Process.run("/bin/bash", arguments: ["-c", "\(vBoxManagePath) list vms | grep \(name)"], silenceOutput: false)
         return result.output != nil && result.output!.contains(name)
     }
-//    func vmCreate(name:String = "default") {
-//        #create and start if needed
-//        if [ $VM_EXISTS_CODE -eq 1 ]; then
+    func vmDelete(name:String = "default") throws {
+        //        $DOCKER_MACHINE rm -f $VM &> /dev/null
+        let rmVmResult = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) rm -f \(name)"], silenceOutput: false)
+        if let rmVmError = rmVmResult.error, rmVmResult.exitCode != 0 {
+            throw DockerToolboxError.dockerMachine(message: rmVmError)
+        }
+        //        rm -rf ~/.docker/machine/machines/$VM
+        let rmMachineResult = Process.run("/bin/rm", arguments: ["-rf", "~/.docker/machine/machines/\(name)"], silenceOutput: false)
+        if let rmMachineError = rmMachineResult.error, rmMachineResult.exitCode != 0 {
+            throw DockerToolboxError.dockerMachine(message: rmMachineError)
+        }
+    }
+    func vmCreate(name:String = "default") throws {
 //        echo "Creating Machine $VM..." >> $LOG_FILE 2>&1
-//        $DOCKER_MACHINE rm -f $VM &> /dev/null
-//        rm -rf ~/.docker/machine/machines/$VM
 //        $DOCKER_MACHINE create -d virtualbox --virtualbox-memory 2048 $VM
-//        else
-//        echo "Machine $VM already exists in VirtualBox." >> $LOG_FILE 2>&1
-//        fi
-//    }
+        let createResult = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) create -d virtualbox --virtualbox-memory 2048 \(name)"], silenceOutput: false)
+        if let createError = createResult.error, createResult.exitCode != 0 {
+            throw DockerToolboxError.dockerMachine(message: createError)
+        }
+    }
     func vmIsRunning(name:String = "default") -> Bool {
         let result = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) status \(name)"], silenceOutput: false)
         return result.output != nil && result.output!.contains("Running")
@@ -101,7 +111,8 @@ public struct DockerToolboxProcess : DockerProcess {
     
     func prepareVM() throws {
         if(!vmExists()){
-            //TODO: create VM
+            try vmDelete()
+            try vmCreate()
         }
         if(!vmIsRunning()){
             let vmResult = vmStart()

@@ -83,13 +83,7 @@ class DockerProcessTests: XCTestCase {
     }
 }
 
-/*
- 
- --------------
- #MARK: You should only run DockForMacTests or DockToolboxTests. You don't need to run both. It depends on which version of docker you are using
- --------------
- 
- */
+
 
 class DockForMacTests : DockerProcessTests {
     func testContainerNameOption() {
@@ -107,8 +101,9 @@ class DockForMacTests : DockerProcessTests {
 }
 
 
-/*
+
 class DockToolboxTests : DockerProcessTests {
+    
     func testVMExists(){
         let process = DockerToolboxProcess(command: "")
         XCTAssertTrue(process.vmExists(name:"default"), "Failed to find Virtual Machine ")
@@ -116,6 +111,32 @@ class DockToolboxTests : DockerProcessTests {
     func testVMDoesNotExist(){
         let process = DockerToolboxProcess(command: "")
         XCTAssertFalse(process.vmExists(name:String(describing:UUID())), "Unknown VM should not have been found.")
+    }
+    func testVmDelete(){
+        do {
+            let vmName = "vmDeleteTest" + UUID().uuidString//docker-machine or VBoxManage uses UUID internally for something, dont' use just UUID
+            let process = DockerToolboxProcess()
+            try process.vmCreate(name: vmName)
+            
+            try process.vmDelete(name: vmName)
+            
+            XCTAssertFalse(process.vmExists(name: vmName))
+        }catch let error {
+            XCTFail("Error: \(error)")
+        }
+    }
+    func testVmCreate(){
+        do {
+            let vmName = "vmCreateTest" + UUID().uuidString//docker-machine or VBoxManage uses UUID internally for something, dont' use just UUID
+            let process = DockerToolboxProcess()
+            
+            try process.vmCreate(name: vmName)
+            
+            XCTAssertTrue(process.vmExists(name: vmName))
+            try process.vmDelete(name: vmName)//cleanup
+        }catch let error {
+            XCTFail("Error: \(error)")
+        }
     }
     
     func testVmIsRunning(){
@@ -169,4 +190,4 @@ class DockToolboxTests : DockerProcessTests {
         //Strip the quotes for the arg after -c
     }
 }
-*/
+
