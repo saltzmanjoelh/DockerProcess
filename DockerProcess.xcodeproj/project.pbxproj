@@ -33,11 +33,11 @@
         _______Group_SynchronousProcess = {
             isa = PBXGroup;
             name = 'SynchronousProcess';
-            path = 'Packages/SynchronousProcess-1.0.9/Sources';
+            path = 'Packages/SynchronousProcess-1.0.10/Sources';
             sourceTree = '<group>';
-            children = ('__PBXFileRef_Packages/SynchronousProcess-1.0.9/Sources/SynchronousProcess.swift');
+            children = ('__PBXFileRef_Packages/SynchronousProcess-1.0.10/Sources/SynchronousProcess.swift');
         };
-        '__PBXFileRef_Packages/SynchronousProcess-1.0.9/Sources/SynchronousProcess.swift' = {
+        '__PBXFileRef_Packages/SynchronousProcess-1.0.10/Sources/SynchronousProcess.swift' = {
             isa = PBXFileReference;
             lastKnownFileType = sourcecode.swift;
             path = 'SynchronousProcess.swift';
@@ -62,12 +62,12 @@
         };
         CompilePhase_SynchronousProcess = {
             isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Packages/SynchronousProcess-1.0.9/Sources/SynchronousProcess.swift');
+            files = ('__src_cc_ref_Packages/SynchronousProcess-1.0.10/Sources/SynchronousProcess.swift');
             runOnlyForDeploymentPostprocessing = 0;
         };
-        '__src_cc_ref_Packages/SynchronousProcess-1.0.9/Sources/SynchronousProcess.swift' = {
+        '__src_cc_ref_Packages/SynchronousProcess-1.0.10/Sources/SynchronousProcess.swift' = {
             isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/SynchronousProcess-1.0.9/Sources/SynchronousProcess.swift';
+            fileRef = '__PBXFileRef_Packages/SynchronousProcess-1.0.10/Sources/SynchronousProcess.swift';
         };
         ___LinkPhase_SynchronousProcess = {
             isa = PBXFrameworksBuildPhase;

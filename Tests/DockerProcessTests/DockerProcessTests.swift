@@ -83,6 +83,14 @@ class DockerProcessTests: XCTestCase {
     }
 }
 
+/*
+ 
+ --------------
+ #MARK: You should only run DockForMacTests or DockToolboxTests. You don't need to run both. It depends on which version of docker you are using
+ --------------
+ 
+ */
+
 class DockForMacTests : DockerProcessTests {
     func testContainerNameOption() {
         containerNameOption(processClass:DockerForMacProcess.self)
@@ -98,6 +106,8 @@ class DockForMacTests : DockerProcessTests {
     }
 }
 
+
+/*
 class DockToolboxTests : DockerProcessTests {
     func testVMExists(){
         let process = DockerToolboxProcess(command: "")
@@ -159,3 +169,4 @@ class DockToolboxTests : DockerProcessTests {
         //Strip the quotes for the arg after -c
     }
 }
+*/
