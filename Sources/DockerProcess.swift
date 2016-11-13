@@ -65,7 +65,7 @@ public struct DockerProcess {
     }
     
     public func isDockerForMac() throws -> Bool {
-        let result = Process.run("/bin/ls", arguments: ["-al", launchPath])
+        let result = Process.run("/bin/ls", arguments: ["-al", launchPath], silenceOutput: true)
         if let output = result.output {
             return output.contains("group.com.docker")
         }
