@@ -177,7 +177,7 @@ public struct DockerProcess {
     @discardableResult
     public func launch(silenceOutput:Bool = false) -> ProcessResult {
     
-        print("DockerProcess Launching:\n/usr/bin/env \(launchPath) \(launchArguments.joined(separator: " "))")
+        print("DockerProcess Launching:\n \(launchPath) \(launchArguments.joined(separator: " "))")
         
         var isToolbox = false
         do{

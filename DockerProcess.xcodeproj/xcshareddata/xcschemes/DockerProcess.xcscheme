@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SynchronousProcess"
+               BlueprintIdentifier = "OBJ_19"
                BuildableName = "SynchronousProcess.framework"
                BlueprintName = "SynchronousProcess"
                ReferencedContainer = "container:DockerProcess.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_DockerProcess"
+               BlueprintIdentifier = "OBJ_26"
                BuildableName = "DockerProcess.framework"
                BlueprintName = "DockerProcess"
                ReferencedContainer = "container:DockerProcess.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_DockerProcessTests"
+               BlueprintIdentifier = "OBJ_35"
                BuildableName = "DockerProcessTests.xctest"
                BlueprintName = "DockerProcessTests"
                ReferencedContainer = "container:DockerProcess.xcodeproj">
@@ -69,7 +69,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "______Target_SynchronousProcess"
+            BlueprintIdentifier = "OBJ_19"
             BuildableName = "SynchronousProcess.framework"
             BlueprintName = "SynchronousProcess"
             ReferencedContainer = "container:DockerProcess.xcodeproj">

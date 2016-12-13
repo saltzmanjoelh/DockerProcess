@@ -37,6 +37,7 @@ class DockerProcessTests : XCTestCase {
 //    }
     
     func testVMExists(){
+        XCTFail()
         if isRunningDockerForMac() {
             return //no need to run this test
         }
