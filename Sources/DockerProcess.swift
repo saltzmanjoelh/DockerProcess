@@ -23,8 +23,9 @@ public enum DockerProcessError: Error {
 
 //Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 
-public struct DockerProcess {
-    public var launchPath: String = "/usr/local/bin/docker"
+public struct DockerProcess: DockerRunnable {
+
+    public var launchPath: String = "/usr/local/bin/docker"//"/bin/bash"
     public var command: String? // run, exec, ps
     public var commandOptions: [String]?// --name
     public var imageName: String? // saltzmanjoelh/swiftubuntu
@@ -38,7 +39,7 @@ public struct DockerProcess {
     public init(command:String, commandOptions:[String]? = nil) {
         self.init(command:command, commandOptions:commandOptions, imageName:nil, commandArgs:nil)
     }
-    public init(command:String, commandOptions:[String]? = nil, imageName:String? = nil, commandArgs:[String]? = nil) {
+    public init(command: String, commandOptions: [String]? = nil, imageName: String? = nil, commandArgs: [String]? = nil) {
         self.init()
         self.command = command
         self.commandOptions = commandOptions
@@ -177,7 +178,7 @@ public struct DockerProcess {
     @discardableResult
     public func launch(silenceOutput:Bool = false) -> ProcessResult {
     
-        print("DockerProcess Launching:\n/usr/bin/env \(launchPath) \(launchArguments.joined(separator: " "))")
+        print("DockerProcess Launching:\n \"\(launchPath) \(launchArguments.joined(separator: " "))\"")
         
         var isToolbox = false
         do{
@@ -185,7 +186,9 @@ public struct DockerProcess {
             if isToolbox {
                 try prepareVM()
             }
-        }catch _{
+        }catch let e {
+            //launchpath is not accessible? do you have execute access to the docker binary?
+            print("error: \(e)")
             return ProcessResult(output:nil, error:nil, exitCode:-1)//trying to not have this func throw
         }
         

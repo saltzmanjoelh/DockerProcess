@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3899E5431DFE2690001DC9BE /* DockerRunnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3899E5421DFE2690001DC9BE /* DockerRunnable.swift */; };
 		_LinkFileRef_DockerProcess_via_DockerProcessTests /* DockerProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_DockerProcess" /* DockerProcess.framework */; };
 		_LinkFileRef_SynchronousProcess_via_DockerProcess /* SynchronousProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SynchronousProcess" /* SynchronousProcess.framework */; };
 		_LinkFileRef_SynchronousProcess_via_DockerProcessTests /* SynchronousProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SynchronousProcess" /* SynchronousProcess.framework */; };
-		"__src_cc_ref_Packages/SynchronousProcess-1.0.10/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SynchronousProcess-1.0.10/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift */; };
+		"__src_cc_ref_Packages/SynchronousProcess/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SynchronousProcess/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift */; };
 		__src_cc_ref_Sources/DockerToolboxProcess.swift /* DockerProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/DockerToolboxProcess.swift /* DockerProcess.swift */; };
 		__src_cc_ref_Tests/DockerProcessTests/DockerProcessTests.swift /* DockerProcessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/DockerProcessTests/DockerProcessTests.swift /* DockerProcessTests.swift */; };
 /* End PBXBuildFile section */
@@ -33,9 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3899E5421DFE2690001DC9BE /* DockerRunnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockerRunnable.swift; sourceTree = "<group>"; };
 		__PBXFileRef_DockerProcess.xcodeproj/Configs/Project.xcconfig /* DockerProcess.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DockerProcess.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/SynchronousProcess-1.0.10/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronousProcess.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/SynchronousProcess/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronousProcess.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/DockerToolboxProcess.swift /* DockerProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerProcess.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/DockerProcessTests/DockerProcessTests.swift /* DockerProcessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerProcessTests.swift; sourceTree = "<group>"; };
 		"_____Product_DockerProcess" /* DockerProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DockerProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Sources/DockerToolboxProcess.swift /* DockerProcess.swift */,
+				3899E5421DFE2690001DC9BE /* DockerRunnable.swift */,
 			);
 			name = DockerProcess;
 			path = Sources;
@@ -146,10 +149,10 @@
 		"_______Group_SynchronousProcess" /* SynchronousProcess */ = {
 			isa = PBXGroup;
 			children = (
-				"__PBXFileRef_Packages/SynchronousProcess-1.0.10/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift */,
+				"__PBXFileRef_Packages/SynchronousProcess/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift */,
 			);
 			name = SynchronousProcess;
-			path = "Packages/SynchronousProcess-1.0.10/Sources";
+			path = "Packages/SynchronousProcess/Sources";
 			sourceTree = "<group>";
 		};
 		"_______Tests_" /* Tests */ = {
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				3899E5431DFE2690001DC9BE /* DockerRunnable.swift in Sources */,
 				__src_cc_ref_Sources/DockerToolboxProcess.swift /* DockerProcess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,7 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				"__src_cc_ref_Packages/SynchronousProcess-1.0.10/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift in Sources */,
+				"__src_cc_ref_Packages/SynchronousProcess/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
