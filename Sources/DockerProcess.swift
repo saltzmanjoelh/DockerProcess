@@ -1,6 +1,30 @@
 import Foundation
 import SynchronousProcess
 
+public enum DockerRunOption {
+    
+    case removeWhenDone
+    case container(name: String)
+    case volume(source: String, destination: String)
+    case custom(option: String)
+    
+    public var processValues: [String] {
+        get {
+            switch self {
+            case .removeWhenDone:
+                return ["--rm"]
+            case .container(let name):
+                return ["--name \(name)"]
+            case .volume(let source, let destination):
+                return ["--volume", "\(source):\(destination)"]
+            case .custom(let option):
+                return ["\(option)"]
+            }
+            
+        }
+    }
+}
+
 public enum DockerProcessError: Error {
     case typeDetection(message:String)
     case missingFile(message:String)
@@ -66,7 +90,7 @@ public struct DockerProcess: DockerRunnable {
     }
     
     public func isDockerForMac() throws -> Bool {
-        let result = Process.run("/bin/ls", arguments: ["-al", launchPath], silenceOutput: true)
+        let result = Process.run("/bin/ls", arguments: ["-al", launchPath], printOutput: false)
         if let output = result.output {
             return output.contains("group.com.docker")
         }
@@ -93,40 +117,40 @@ public struct DockerProcess: DockerRunnable {
         }
     }
     func vmExists(name:String = "default") -> Bool {
-        let result = Process.run("/bin/bash", arguments: ["-c", "\(vBoxManagePath) list vms | grep \(name)"], silenceOutput: false)
+        let result = Process.run("/bin/bash", arguments: ["-c", "\(vBoxManagePath) list vms | grep \(name)"], printOutput: true)
         return result.output != nil && result.output!.contains(name)
     }
     func vmDelete(name:String = "default") throws {
         //        $DOCKER_MACHINE rm -f $VM &> /dev/null
-        let rmVmResult = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) rm -f \(name)"], silenceOutput: false)
+        let rmVmResult = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) rm -f \(name)"], printOutput: true)
         if let rmVmError = rmVmResult.error, rmVmResult.exitCode != 0 {
             throw DockerProcessError.dockerMachine(message: rmVmError)
         }
         //        rm -rf ~/.docker/machine/machines/$VM
-        let rmMachineResult = Process.run("/bin/rm", arguments: ["-rf", "~/.docker/machine/machines/\(name)"], silenceOutput: false)
+        let rmMachineResult = Process.run("/bin/rm", arguments: ["-rf", "~/.docker/machine/machines/\(name)"], printOutput: true)
         if let rmMachineError = rmMachineResult.error, rmMachineResult.exitCode != 0 {
             throw DockerProcessError.dockerMachine(message: rmMachineError)
         }
     }
     func vmCreate(name:String = "default") throws {
-//        echo "Creating Machine $VM..." >> $LOG_FILE 2>&1
-//        $DOCKER_MACHINE create -d virtualbox --virtualbox-memory 2048 $VM
-        let createResult = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) create -d virtualbox --virtualbox-memory 2048 \(name)"], silenceOutput: false)
+        //        echo "Creating Machine $VM..." >> $LOG_FILE 2>&1
+        //        $DOCKER_MACHINE create -d virtualbox --virtualbox-memory 2048 $VM
+        let createResult = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) create -d virtualbox --virtualbox-memory 2048 \(name)"], printOutput: true)
         if let createError = createResult.error, createResult.exitCode != 0 {
             throw DockerProcessError.dockerMachine(message: createError)
         }
     }
     func vmIsRunning(name:String = "default") -> Bool {
-        let result = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) status \(name)"], silenceOutput: false)
+        let result = Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) status \(name)"], printOutput: true)
         return result.output != nil && result.output!.contains("Running")
     }
     func vmStart(name:String = "default") -> ProcessResult {
-        return Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) start default"], silenceOutput: false)
+        return Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) start default"], printOutput: true)
     }
-    func environment(silenceOutput:Bool = true) throws -> [String:String] {
+    func environment(printOutput:Bool = false) throws -> [String:String] {
         let export = "export PATH=/usr/local/bin:$PATH"
         let machine = "/usr/local/bin/docker-machine env --shell=bash default"
-        let result = Process.run("/usr/bin/env", arguments: ["/bin/bash", "-c", "\(export); \(machine)"], silenceOutput: silenceOutput)
+        let result = Process.run("/usr/bin/env", arguments: ["/bin/bash", "-c", "\(export); \(machine)"], printOutput: printOutput)
         RunLoop.current.run(until: Date(timeIntervalSinceNow: TimeInterval(0.2)))//give it a sec to clean up
         if let error = result.error {
             throw DockerProcessError.badEnvironment(message: "Error getting environment: \(error)")
@@ -164,7 +188,7 @@ public struct DockerProcess: DockerRunnable {
     }
     
     public func shouldPull(image:String) -> Bool {
-        let imagesResult = DockerProcess(command:"images", commandOptions:["-a"], commandArgs:nil).launch(silenceOutput: true)
+        let imagesResult = DockerProcess(command:"images", commandOptions:["-a"], commandArgs:nil).launch(printOutput: false)
         var images = [String]()
         if let output = imagesResult.output {
             images = output.components(separatedBy: "\n").filter{ $0.hasPrefix(image) }
@@ -174,10 +198,10 @@ public struct DockerProcess: DockerRunnable {
     
     /*
      Throws if we can't start default virtual machine
-    */
+     */
     @discardableResult
-    public func launch(silenceOutput:Bool = false) -> ProcessResult {
-    
+    public func launch(printOutput:Bool = true) -> ProcessResult {
+        
         print("DockerProcess Launching:\n \"\(launchPath) \(launchArguments.joined(separator: " "))\"")
         
         var isToolbox = false
@@ -205,20 +229,20 @@ public struct DockerProcess: DockerRunnable {
         
         if isToolbox {
             do{
-                process.environment = try environment(silenceOutput:silenceOutput)
+                process.environment = try environment(printOutput:printOutput)
             }catch let error {
                 return ProcessResult(output:nil, error:"\(error)", exitCode:-1)//trying to not have this func throw
             }
         }
         
-        let result = process.run(silenceOutput)
-//        if let error = result.error {
-//            if error.contains("Segmentation fault") {//docker 💩👖, try again
-//                return result
-//            }else{
-//                return process.run(silenceOutput: false)//try again
-//            }
-//        }
+        let result = process.run(printOutput)
+        //        if let error = result.error {
+        //            if error.contains("Segmentation fault") {//docker 💩👖, try again
+        //                return result
+        //            }else{
+        //                return process.run(printOutput: true)//try again
+        //            }
+        //        }
         return result
     }
     

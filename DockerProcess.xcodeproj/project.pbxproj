@@ -7,206 +7,155 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3899E5431DFE2690001DC9BE /* DockerRunnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3899E5421DFE2690001DC9BE /* DockerRunnable.swift */; };
-		_LinkFileRef_DockerProcess_via_DockerProcessTests /* DockerProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_DockerProcess" /* DockerProcess.framework */; };
-		_LinkFileRef_SynchronousProcess_via_DockerProcess /* SynchronousProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SynchronousProcess" /* SynchronousProcess.framework */; };
-		_LinkFileRef_SynchronousProcess_via_DockerProcessTests /* SynchronousProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SynchronousProcess" /* SynchronousProcess.framework */; };
-		"__src_cc_ref_Packages/SynchronousProcess/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SynchronousProcess/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift */; };
-		__src_cc_ref_Sources/DockerToolboxProcess.swift /* DockerProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/DockerToolboxProcess.swift /* DockerProcess.swift */; };
-		__src_cc_ref_Tests/DockerProcessTests/DockerProcessTests.swift /* DockerProcessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/DockerProcessTests/DockerProcessTests.swift /* DockerProcessTests.swift */; };
+		3831DEDB1E180C4000748C43 /* ProcessRunnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3831DEDA1E180C4000748C43 /* ProcessRunnable.swift */; };
+		OBJ_25 /* SynchronousProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* SynchronousProcess.swift */; };
+		OBJ_32 /* DockerProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DockerProcess.swift */; };
+		OBJ_33 /* DockerRunnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DockerRunnable.swift */; };
+		OBJ_35 /* SynchronousProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* SynchronousProcess.framework */; };
+		OBJ_42 /* DockerProcessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* DockerProcessTests.swift */; };
+		OBJ_44 /* SynchronousProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* SynchronousProcess.framework */; };
+		OBJ_45 /* DockerProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* DockerProcess.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		38CC3A461DD5AF4000D6238C /* PBXContainerItemProxy */ = {
+		3859E0891E0BB4D400D85D01 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = __RootObject_ /* Project object */;
+			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = "______Target_SynchronousProcess";
+			remoteGlobalIDString = OBJ_20;
 			remoteInfo = SynchronousProcess;
 		};
-		38CC3A471DD5AF4000D6238C /* PBXContainerItemProxy */ = {
+		3859E08A1E0BB4D400D85D01 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = __RootObject_ /* Project object */;
+			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = "______Target_DockerProcess";
+			remoteGlobalIDString = OBJ_20;
+			remoteInfo = SynchronousProcess;
+		};
+		3859E08B1E0BB4D400D85D01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = OBJ_27;
 			remoteInfo = DockerProcess;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3899E5421DFE2690001DC9BE /* DockerRunnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockerRunnable.swift; sourceTree = "<group>"; };
-		__PBXFileRef_DockerProcess.xcodeproj/Configs/Project.xcconfig /* DockerProcess.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DockerProcess.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
-		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/SynchronousProcess/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronousProcess.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/DockerToolboxProcess.swift /* DockerProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerProcess.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/DockerProcessTests/DockerProcessTests.swift /* DockerProcessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerProcessTests.swift; sourceTree = "<group>"; };
-		"_____Product_DockerProcess" /* DockerProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DockerProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_DockerProcessTests" /* DockerProcessTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = DockerProcessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_SynchronousProcess" /* SynchronousProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SynchronousProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3831DEDA1E180C4000748C43 /* ProcessRunnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessRunnable.swift; path = "Packages/SynchronousProcess-1.0.12/Sources/ProcessRunnable.swift"; sourceTree = SOURCE_ROOT; };
+		OBJ_11 /* DockerProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerProcess.swift; sourceTree = "<group>"; };
+		OBJ_12 /* DockerRunnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerRunnable.swift; sourceTree = "<group>"; };
+		OBJ_15 /* DockerProcessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerProcessTests.swift; sourceTree = "<group>"; };
+		OBJ_17 /* SynchronousProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SynchronousProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_18 /* DockerProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DockerProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_19 /* DockerProcessTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = DockerProcessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_9 /* SynchronousProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronousProcess.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		"___LinkPhase_DockerProcess" /* Frameworks */ = {
+		OBJ_26 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				_LinkFileRef_SynchronousProcess_via_DockerProcess /* SynchronousProcess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		"___LinkPhase_DockerProcessTests" /* Frameworks */ = {
+		OBJ_34 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				_LinkFileRef_SynchronousProcess_via_DockerProcessTests /* SynchronousProcess.framework in Frameworks */,
-				_LinkFileRef_DockerProcess_via_DockerProcessTests /* DockerProcess.framework in Frameworks */,
+				OBJ_35 /* SynchronousProcess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		"___LinkPhase_SynchronousProcess" /* Frameworks */ = {
+		OBJ_43 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				OBJ_44 /* SynchronousProcess.framework in Frameworks */,
+				OBJ_45 /* DockerProcess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		Dependencies_ /* Dependencies */ = {
+		OBJ_10 /* DockerProcess */ = {
 			isa = PBXGroup;
 			children = (
-				"_______Group_SynchronousProcess" /* SynchronousProcess */,
-			);
-			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		TestProducts_ /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				"_____Product_DockerProcessTests" /* DockerProcessTests.xctest */,
-			);
-			name = Tests;
-			sourceTree = "<group>";
-		};
-		"___RootGroup_" = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Package.swift /* Package.swift */,
-				"_____Configs_" /* Configs */,
-				"_____Sources_" /* Sources */,
-				Dependencies_ /* Dependencies */,
-				"_______Tests_" /* Tests */,
-				"____Products_" /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		"____Products_" /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				TestProducts_ /* Tests */,
-				"_____Product_SynchronousProcess" /* SynchronousProcess.framework */,
-				"_____Product_DockerProcess" /* DockerProcess.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		"_____Configs_" /* Configs */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_DockerProcess.xcodeproj/Configs/Project.xcconfig /* DockerProcess.xcodeproj/Configs/Project.xcconfig */,
-			);
-			name = Configs;
-			sourceTree = "<group>";
-		};
-		"_____Sources_" /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				"_______Group_DockerProcess" /* DockerProcess */,
-			);
-			name = Sources;
-			sourceTree = "<group>";
-		};
-		"_______Group_DockerProcess" /* DockerProcess */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Sources/DockerToolboxProcess.swift /* DockerProcess.swift */,
-				3899E5421DFE2690001DC9BE /* DockerRunnable.swift */,
+				OBJ_11 /* DockerProcess.swift */,
+				OBJ_12 /* DockerRunnable.swift */,
 			);
 			name = DockerProcess;
 			path = Sources;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
-		"_______Group_DockerProcessTests" /* DockerProcessTests */ = {
+		OBJ_13 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				__PBXFileRef_Tests/DockerProcessTests/DockerProcessTests.swift /* DockerProcessTests.swift */,
+				OBJ_14 /* DockerProcessTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		OBJ_14 /* DockerProcessTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_15 /* DockerProcessTests.swift */,
 			);
 			name = DockerProcessTests;
 			path = Tests/DockerProcessTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
-		"_______Group_SynchronousProcess" /* SynchronousProcess */ = {
+		OBJ_16 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				"__PBXFileRef_Packages/SynchronousProcess/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift */,
+				OBJ_17 /* SynchronousProcess.framework */,
+				OBJ_18 /* DockerProcess.framework */,
+				OBJ_19 /* DockerProcessTests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_13 /* Tests */,
+				OBJ_16 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* SynchronousProcess */,
+				OBJ_10 /* DockerProcess */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		OBJ_8 /* SynchronousProcess */ = {
+			isa = PBXGroup;
+			children = (
+				3831DEDA1E180C4000748C43 /* ProcessRunnable.swift */,
+				OBJ_9 /* SynchronousProcess.swift */,
 			);
 			name = SynchronousProcess;
-			path = "Packages/SynchronousProcess/Sources";
-			sourceTree = "<group>";
-		};
-		"_______Tests_" /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				"_______Group_DockerProcessTests" /* DockerProcessTests */,
-			);
-			name = Tests;
-			sourceTree = "<group>";
+			path = Packages/SynchronousProcess/Sources;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		"______Target_DockerProcess" /* DockerProcess */ = {
+		OBJ_20 /* SynchronousProcess */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_DockerProcess" /* Build configuration list for PBXNativeTarget "DockerProcess" */;
+			buildConfigurationList = OBJ_21 /* Build configuration list for PBXNativeTarget "SynchronousProcess" */;
 			buildPhases = (
-				CompilePhase_DockerProcess /* Sources */,
-				"___LinkPhase_DockerProcess" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				__Dependency_SynchronousProcess /* PBXTargetDependency */,
-			);
-			name = DockerProcess;
-			productName = DockerProcess;
-			productReference = "_____Product_DockerProcess" /* DockerProcess.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"______Target_DockerProcessTests" /* DockerProcessTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_DockerProcessTests" /* Build configuration list for PBXNativeTarget "DockerProcessTests" */;
-			buildPhases = (
-				CompilePhase_DockerProcessTests /* Sources */,
-				"___LinkPhase_DockerProcessTests" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				__Dependency_SynchronousProcess /* PBXTargetDependency */,
-				__Dependency_DockerProcess /* PBXTargetDependency */,
-			);
-			name = DockerProcessTests;
-			productName = DockerProcessTests;
-			productReference = "_____Product_DockerProcessTests" /* DockerProcessTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		"______Target_SynchronousProcess" /* SynchronousProcess */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_SynchronousProcess" /* Build configuration list for PBXNativeTarget "SynchronousProcess" */;
-			buildPhases = (
-				CompilePhase_SynchronousProcess /* Sources */,
-				"___LinkPhase_SynchronousProcess" /* Frameworks */,
+				OBJ_24 /* Sources */,
+				OBJ_26 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,112 +163,128 @@
 			);
 			name = SynchronousProcess;
 			productName = SynchronousProcess;
-			productReference = "_____Product_SynchronousProcess" /* SynchronousProcess.framework */;
+			productReference = OBJ_17 /* SynchronousProcess.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		OBJ_27 /* DockerProcess */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_28 /* Build configuration list for PBXNativeTarget "DockerProcess" */;
+			buildPhases = (
+				OBJ_31 /* Sources */,
+				OBJ_34 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_36 /* PBXTargetDependency */,
+			);
+			name = DockerProcess;
+			productName = DockerProcess;
+			productReference = OBJ_18 /* DockerProcess.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		OBJ_37 /* DockerProcessTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_38 /* Build configuration list for PBXNativeTarget "DockerProcessTests" */;
+			buildPhases = (
+				OBJ_41 /* Sources */,
+				OBJ_43 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_46 /* PBXTargetDependency */,
+				OBJ_47 /* PBXTargetDependency */,
+			);
+			name = DockerProcessTests;
+			productName = DockerProcessTests;
+			productReference = OBJ_19 /* DockerProcessTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		__RootObject_ /* Project object */ = {
+		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
 			};
-			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "DockerProcess" */;
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "DockerProcess" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = "___RootGroup_";
-			productRefGroup = "____Products_" /* Products */;
+			mainGroup = OBJ_5;
+			productRefGroup = OBJ_16 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				"______Target_SynchronousProcess" /* SynchronousProcess */,
-				"______Target_DockerProcess" /* DockerProcess */,
-				"______Target_DockerProcessTests" /* DockerProcessTests */,
+				OBJ_20 /* SynchronousProcess */,
+				OBJ_27 /* DockerProcess */,
+				OBJ_37 /* DockerProcessTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CompilePhase_DockerProcess /* Sources */ = {
+		OBJ_24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				3899E5431DFE2690001DC9BE /* DockerRunnable.swift in Sources */,
-				__src_cc_ref_Sources/DockerToolboxProcess.swift /* DockerProcess.swift in Sources */,
+				3831DEDB1E180C4000748C43 /* ProcessRunnable.swift in Sources */,
+				OBJ_25 /* SynchronousProcess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CompilePhase_DockerProcessTests /* Sources */ = {
+		OBJ_31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				__src_cc_ref_Tests/DockerProcessTests/DockerProcessTests.swift /* DockerProcessTests.swift in Sources */,
+				OBJ_32 /* DockerProcess.swift in Sources */,
+				OBJ_33 /* DockerRunnable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CompilePhase_SynchronousProcess /* Sources */ = {
+		OBJ_41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				"__src_cc_ref_Packages/SynchronousProcess/Sources/SynchronousProcess.swift" /* SynchronousProcess.swift in Sources */,
+				OBJ_42 /* DockerProcessTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		__Dependency_DockerProcess /* PBXTargetDependency */ = {
+		OBJ_36 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = "______Target_DockerProcess" /* DockerProcess */;
-			targetProxy = 38CC3A471DD5AF4000D6238C /* PBXContainerItemProxy */;
+			target = OBJ_20 /* SynchronousProcess */;
+			targetProxy = 3859E0891E0BB4D400D85D01 /* PBXContainerItemProxy */;
 		};
-		__Dependency_SynchronousProcess /* PBXTargetDependency */ = {
+		OBJ_46 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = "______Target_SynchronousProcess" /* SynchronousProcess */;
-			targetProxy = 38CC3A461DD5AF4000D6238C /* PBXContainerItemProxy */;
+			target = OBJ_20 /* SynchronousProcess */;
+			targetProxy = 3859E08A1E0BB4D400D85D01 /* PBXContainerItemProxy */;
+		};
+		OBJ_47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = OBJ_27 /* DockerProcess */;
+			targetProxy = 3859E08B1E0BB4D400D85D01 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		_ReleaseConf_DockerProcess /* Release */ = {
+		OBJ_22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
-				INFOPLIST_FILE = DockerProcess.xcodeproj/DockerProcess_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = DockerProcess;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		_ReleaseConf_DockerProcessTests /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
-				INFOPLIST_FILE = DockerProcess.xcodeproj/DockerProcessTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		_ReleaseConf_SynchronousProcess /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DockerProcess.xcodeproj/SynchronousProcess_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -327,46 +292,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SynchronousProcess;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		"___DebugConf_DockerProcess" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
-				INFOPLIST_FILE = DockerProcess.xcodeproj/DockerProcess_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = DockerProcess;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				TARGET_NAME = SynchronousProcess;
 			};
 			name = Debug;
 		};
-		"___DebugConf_DockerProcessTests" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
-				INFOPLIST_FILE = DockerProcess.xcodeproj/DockerProcessTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		"___DebugConf_SynchronousProcess" /* Debug */ = {
+		OBJ_23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DockerProcess.xcodeproj/SynchronousProcess_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -374,65 +312,166 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SynchronousProcess;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		"_____Release_" /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = __PBXFileRef_DockerProcess.xcodeproj/Configs/Project.xcconfig /* DockerProcess.xcodeproj/Configs/Project.xcconfig */;
-			buildSettings = {
+				TARGET_NAME = SynchronousProcess;
 			};
 			name = Release;
 		};
-		"_______Debug_" /* Debug */ = {
+		OBJ_29 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = __PBXFileRef_DockerProcess.xcodeproj/Configs/Project.xcconfig /* DockerProcess.xcodeproj/Configs/Project.xcconfig */;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = DockerProcess.xcodeproj/DockerProcess_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = DockerProcess;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				TARGET_NAME = DockerProcess;
 			};
 			name = Debug;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = DockerProcess.xcodeproj/DockerProcess_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = DockerProcess;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				TARGET_NAME = DockerProcess;
+			};
+			name = Release;
+		};
+		OBJ_39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = DockerProcess.xcodeproj/DockerProcessTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				TARGET_NAME = DockerProcessTests;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = DockerProcess.xcodeproj/DockerProcessTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				TARGET_NAME = DockerProcessTests;
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		"___RootConfs_" /* Build configuration list for PBXProject "DockerProcess" */ = {
+		OBJ_2 /* Build configuration list for PBXProject "DockerProcess" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				"_______Debug_" /* Debug */,
-				"_____Release_" /* Release */,
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		"_______Confs_DockerProcess" /* Build configuration list for PBXNativeTarget "DockerProcess" */ = {
+		OBJ_21 /* Build configuration list for PBXNativeTarget "SynchronousProcess" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				"___DebugConf_DockerProcess" /* Debug */,
-				_ReleaseConf_DockerProcess /* Release */,
+				OBJ_22 /* Debug */,
+				OBJ_23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		"_______Confs_DockerProcessTests" /* Build configuration list for PBXNativeTarget "DockerProcessTests" */ = {
+		OBJ_28 /* Build configuration list for PBXNativeTarget "DockerProcess" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				"___DebugConf_DockerProcessTests" /* Debug */,
-				_ReleaseConf_DockerProcessTests /* Release */,
+				OBJ_29 /* Debug */,
+				OBJ_30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		"_______Confs_SynchronousProcess" /* Build configuration list for PBXNativeTarget "SynchronousProcess" */ = {
+		OBJ_38 /* Build configuration list for PBXNativeTarget "DockerProcessTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				"___DebugConf_SynchronousProcess" /* Debug */,
-				_ReleaseConf_SynchronousProcess /* Release */,
+				OBJ_39 /* Debug */,
+				OBJ_40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = __RootObject_ /* Project object */;
+	rootObject = OBJ_1 /* Project object */;
 }

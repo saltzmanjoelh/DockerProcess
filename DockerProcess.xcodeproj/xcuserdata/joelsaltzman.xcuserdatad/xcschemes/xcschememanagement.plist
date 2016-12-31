@@ -4,6 +4,21 @@
 <dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>OBJ_20</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>OBJ_27</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>OBJ_37</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>______Target_DockerProcess</key>
 		<dict>
 			<key>primary</key>
