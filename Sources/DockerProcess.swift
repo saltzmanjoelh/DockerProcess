@@ -5,6 +5,7 @@ public enum DockerRunOption {
     
     case removeWhenDone
     case container(name: String)
+    case workingDirectory(at: String)
     case volume(source: String, destination: String)
     case custom(option: String)
     
@@ -14,11 +15,13 @@ public enum DockerRunOption {
             case .removeWhenDone:
                 return ["--rm"]
             case .container(let name):
-                return ["--name \(name)"]
+                return ["--name", name]
+            case .workingDirectory(let sourcePath):
+                return ["--workdir", sourcePath]
             case .volume(let source, let destination):
                 return ["--volume", "\(source):\(destination)"]
             case .custom(let option):
-                return ["\(option)"]
+                return [option]
             }
             
         }
@@ -35,11 +38,11 @@ public enum DockerProcessError: Error {
     var description : String {
         get {
             switch (self) {
-                case let .typeDetection(message): return message
-                case let .missingFile(message): return message
-                case let .dockerMachine(message): return message
-                case let .vmFailure(message): return message
-                case let .badEnvironment(message): return message
+            case let .typeDetection(message): return message
+            case let .missingFile(message): return message
+            case let .dockerMachine(message): return message
+            case let .vmFailure(message): return message
+            case let .badEnvironment(message): return message
             }
         }
     }
@@ -48,7 +51,7 @@ public enum DockerProcessError: Error {
 //Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 
 public struct DockerProcess: DockerRunnable {
-
+    
     public var launchPath: String = "/usr/local/bin/docker"//"/bin/bash"
     public var command: String? // run, exec, ps
     public var commandOptions: [String]?// --name
@@ -107,7 +110,7 @@ public struct DockerProcess: DockerRunnable {
             return URL(fileURLWithPath: launchPath).deletingLastPathComponent().path.appending("/VBoxManage")
         }
     }
- 
+    
     func validateToolboxPaths() throws {
         let files = [("Docker Machine", machinePath), ("VBoxManage", vBoxManagePath)]
         for file in files {

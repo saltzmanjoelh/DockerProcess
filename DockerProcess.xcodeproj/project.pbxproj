@@ -42,7 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3831DEDA1E180C4000748C43 /* ProcessRunnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessRunnable.swift; path = "Packages/SynchronousProcess-1.0.12/Sources/ProcessRunnable.swift"; sourceTree = SOURCE_ROOT; };
+		3831DEDA1E180C4000748C43 /* ProcessRunnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessRunnable.swift; path = Packages/SynchronousProcess/Sources/ProcessRunnable.swift; sourceTree = SOURCE_ROOT; };
 		OBJ_11 /* DockerProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerProcess.swift; sourceTree = "<group>"; };
 		OBJ_12 /* DockerRunnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerRunnable.swift; sourceTree = "<group>"; };
 		OBJ_15 /* DockerProcessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerProcessTests.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		OBJ_18 /* DockerProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DockerProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_19 /* DockerProcessTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = DockerProcessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* SynchronousProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronousProcess.swift; sourceTree = "<group>"; };
+		OBJ_9 /* SynchronousProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SynchronousProcess.swift; path = "../../SynchronousProcess-1.0.12/Sources/SynchronousProcess.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
