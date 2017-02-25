@@ -2,6 +2,8 @@ language: objective-c
 osx_image: xcode8.2
 before_install:
 - brew update
-- brew install docker
+- brew install docker docker-machine
+- eval $(docker-machine env default)
+- docker --version
 script:
   - "swift test"
