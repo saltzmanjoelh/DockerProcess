@@ -2,11 +2,10 @@ language: objective-c
 osx_image: xcode8.2
 before_install:
 - brew update
-- brew install docker docker-machine
+- brew install Caskroom/cask/virtualbox docker docker-machine
 - brew services start docker-machine
-# - docker-machine create default
-# - docker-machine start default
-- eval $(docker-machine env default)
+# - docker-machine create --driver virtualbox default
+- eval "$(docker-machine env default)"
 - docker --version
 script:
   - "swift test"
