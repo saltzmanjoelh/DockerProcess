@@ -1,7 +1,7 @@
 language: objective-c
 osx_image: xcode8.2
 before_install:
-- sudo brew update
-- sudo brew install -qq docker
+- brew update
+- brew install docker
 script:
   - "swift test"
