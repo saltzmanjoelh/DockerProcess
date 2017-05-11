@@ -1,11 +1,11 @@
 import XCTest
-import SynchronousProcess
+import AsyncProcess
 @testable import DockerProcess
 
 class DockerProcessTests : XCTestCase {
     //let containerName = ProcessInfo.processInfo.environment["DOCKER_CONTAINER_NAME"] ?? ProcessInfo.processInfo.environment["PROJECT"]
     var classType : DockerProcess?
-    let imageName = "saltzmanjoelh/swiftubuntu"
+    let imageName = "swift"
     let command = ["/bin/bash", "-c", "whoami"]
     let containerName = String(describing:UUID())
     
@@ -128,7 +128,7 @@ class DockerProcessTests : XCTestCase {
         do{
             try process.prepareVM()
             
-            let environment = try process.environment()
+            let environment = try process.getEnvironment()
             
             XCTAssertEqual(environment.count, 5, "There should have been 5 keys: \(environment)")
         }catch let error {

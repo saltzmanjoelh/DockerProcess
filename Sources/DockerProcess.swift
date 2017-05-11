@@ -1,5 +1,5 @@
 import Foundation
-import SynchronousProcess
+import AsyncProcess
 
 public enum DockerRunOption {
     
@@ -55,7 +55,7 @@ public struct DockerProcess: DockerRunnable {
     public var launchPath: String = "/usr/local/bin/docker"//"/bin/bash"
     public var command: String? // run, exec, ps
     public var commandOptions: [String]?// --name
-    public var imageName: String? // saltzmanjoelh/swiftubuntu
+    public var imageName: String? // swift
     //You have to be careful when populating this value. Everything after the -c is one string
     public var commandArgs: [String]?// ["/bin/bash", "-c", "echo something"]
     public var shouldSilenceOutput = false
@@ -93,6 +93,7 @@ public struct DockerProcess: DockerRunnable {
     }
     
     public func isDockerForMac() throws -> Bool {
+        return true // dropping support for docker toolbox
         let result = Process.run("/bin/ls", arguments: ["-al", launchPath], printOutput: false)
         if let output = result.output {
             return output.contains("group.com.docker")
@@ -150,7 +151,7 @@ public struct DockerProcess: DockerRunnable {
     func vmStart(name:String = "default") -> ProcessResult {
         return Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(machinePath) start default"], printOutput: true)
     }
-    func environment(printOutput:Bool = false) throws -> [String:String] {
+    func getEnvironment(printOutput:Bool = false) throws -> [String:String] {
         let export = "export PATH=/usr/local/bin:$PATH"
         let machine = "/usr/local/bin/docker-machine env --shell=bash default"
         let result = Process.run("/usr/bin/env", arguments: ["/bin/bash", "-c", "\(export); \(machine)"], printOutput: printOutput)
@@ -184,7 +185,7 @@ public struct DockerProcess: DockerRunnable {
         if(!vmIsRunning()){
             let vmResult = vmStart()
             guard vmResult.exitCode != 0  else {
-                throw DockerProcessError.vmFailure(message: "Failed starting VM: exitCode: \(vmResult.exitCode)\n\(vmResult.error)")
+                throw DockerProcessError.vmFailure(message: "Failed starting VM: exitCode: \(vmResult.exitCode)\n\(String(describing: vmResult.error))")
             }
             RunLoop.current.run(until: Date(timeIntervalSinceNow: TimeInterval(0.2)))//give it a sec to clean up
         }
@@ -203,7 +204,7 @@ public struct DockerProcess: DockerRunnable {
      Throws if we can't start default virtual machine
      */
     @discardableResult
-    public func launch(printOutput:Bool = true) -> ProcessResult {
+    public func launch(printOutput:Bool = true, outputPrefix: String? = nil) -> ProcessResult {
         
         print("DockerProcess Launching:\n \"\(launchPath) \(launchArguments.joined(separator: " "))\"")
         
@@ -226,19 +227,16 @@ public struct DockerProcess: DockerRunnable {
             }
         }
         
-        let process = Process()
-        process.launchPath = launchPath
-        process.arguments = launchArguments
+        var environment: [String:String]? = nil
         
         if isToolbox {
             do{
-                process.environment = try environment(printOutput:printOutput)
+                environment = try getEnvironment(printOutput:printOutput)
             }catch let error {
                 return ProcessResult(output:nil, error:"\(error)", exitCode:-1)//trying to not have this func throw
             }
         }
-        
-        let result = process.run(printOutput)
+        return Process.run(launchPath, arguments: launchArguments, printOutput: printOutput, outputPrefix: outputPrefix, environment: environment)
         //        if let error = result.error {
         //            if error.contains("Segmentation fault") {//docker 💩👖, try again
         //                return result
@@ -246,7 +244,6 @@ public struct DockerProcess: DockerRunnable {
         //                return process.run(printOutput: true)//try again
         //            }
         //        }
-        return result
     }
     
     

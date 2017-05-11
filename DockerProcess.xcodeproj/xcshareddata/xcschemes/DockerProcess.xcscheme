@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "OBJ_20"
-               BuildableName = "SynchronousProcess.framework"
-               BlueprintName = "SynchronousProcess"
+               BuildableName = "AsyncProcess.framework"
+               BlueprintName = "AsyncProcess"
                ReferencedContainer = "container:DockerProcess.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -70,8 +70,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "OBJ_20"
-            BuildableName = "SynchronousProcess.framework"
-            BlueprintName = "SynchronousProcess"
+            BuildableName = "AsyncProcess.framework"
+            BlueprintName = "AsyncProcess"
             ReferencedContainer = "container:DockerProcess.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
