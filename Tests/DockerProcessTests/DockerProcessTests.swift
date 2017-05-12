@@ -1,5 +1,5 @@
 import XCTest
-import AsyncProcess
+import ProcessRunner
 @testable import DockerProcess
 
 class DockerProcessTests : XCTestCase {
@@ -96,11 +96,11 @@ class DockerProcessTests : XCTestCase {
         
         let process = DockerProcess(command: "")
         //        print("Preparing to stop VM. This may take a while")
-        //        Process.run(launchPath:"/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(process.machinePath) stop default"], printOutput: true)
+        //        ProcessRunner.synchronousRun(launchPath:"/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(process.machinePath) stop default"], printOutput: true)
         //        RunLoop.current.run(until: Date(timeIntervalSinceNow: TimeInterval(0.2)))//give Docker a sec to cleanup
         
         print("Preparing to start VM. This may take a while")
-        Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(process.machinePath) start default"], printOutput: true)
+        ProcessRunner.synchronousRun("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(process.machinePath) start default"], printOutput: true)
         RunLoop.current.run(until: Date(timeIntervalSinceNow: TimeInterval(0.2)))//give Docker a sec to cleanup
         
         XCTAssertTrue(process.vmIsRunning(name:"default"), "Failed to find running Virtual Machine ")
@@ -114,7 +114,7 @@ class DockerProcessTests : XCTestCase {
         let process = DockerProcess(command: "")
         
         print("Preparing to stop VM. This may take a while")
-        Process.run("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(process.machinePath) stop default"], printOutput: true)
+        ProcessRunner.synchronousRun("/bin/bash", arguments: ["-c", "export PATH=/usr/local/bin:$PATH && \(process.machinePath) stop default"], printOutput: true)
         RunLoop.current.run(until: Date(timeIntervalSinceNow: TimeInterval(0.2)))//give Docker a sec to cleanup
         
         XCTAssertFalse(process.vmIsRunning(name:"default"), "Machine should not be running")
@@ -176,7 +176,7 @@ class DockerProcessTests : XCTestCase {
 
     }
     func testDoesRunInDocker(){
-        let macHostname = Process.run("/bin/hostname", arguments: nil).output?.trimmingCharacters(in:NSMutableCharacterSet.newline() as CharacterSet)
+        let macHostname = ProcessRunner.synchronousRun("/bin/hostname", arguments: nil).output?.trimmingCharacters(in:NSMutableCharacterSet.newline() as CharacterSet)
         let hostNameCommand = "hostname"//can't call $(hostname) or `hostname` because the macOS interprets it before docker ; if [ `hostname` == \(name) ]; then echo \(name); fi.
         
         let linuxResult = DockerProcess.init(command: "run", commandOptions: ["--name", containerName, "--rm", "--hostname", containerName], imageName: imageName, commandArgs: ["/bin/bash", "-c", hostNameCommand]).launch(printOutput: true)
