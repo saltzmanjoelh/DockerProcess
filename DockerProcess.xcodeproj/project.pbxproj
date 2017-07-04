@@ -17,21 +17,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3881837E1EC55ED500445D55 /* PBXContainerItemProxy */ = {
+		388183971EC5771F00445D55 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_20;
 			remoteInfo = ProcessRunner;
 		};
-		3881837F1EC55ED500445D55 /* PBXContainerItemProxy */ = {
+		388183981EC5771F00445D55 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_20;
 			remoteInfo = ProcessRunner;
 		};
-		388183801EC55ED500445D55 /* PBXContainerItemProxy */ = {
+		388183991EC5771F00445D55 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -45,7 +45,7 @@
 		OBJ_15 /* ProcessRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessRunner.swift; sourceTree = "<group>"; };
 		OBJ_17 /* ProcessRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProcessRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_18 /* DockerProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DockerProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_19 /* DockerProcessTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = DockerProcessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_19 /* DockerProcessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = DockerProcessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_8 /* DockerProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerProcess.swift; sourceTree = "<group>"; };
 		OBJ_9 /* DockerRunnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerRunnable.swift; sourceTree = "<group>"; };
@@ -99,17 +99,17 @@
 		OBJ_13 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_14 /* ProcessRunner 1.0.2 */,
+				OBJ_14 /* ProcessRunner 1.0.3 */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
 		};
-		OBJ_14 /* ProcessRunner 1.0.2 */ = {
+		OBJ_14 /* ProcessRunner 1.0.3 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_15 /* ProcessRunner.swift */,
 			);
-			name = "ProcessRunner 1.0.2";
+			name = "ProcessRunner 1.0.3";
 			path = ".build/checkouts/ProcessRunner.git-7587831595904724403/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
@@ -123,7 +123,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -132,7 +132,6 @@
 				OBJ_13 /* Dependencies */,
 				OBJ_16 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -205,6 +204,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					OBJ_20 = {
+						LastSwiftMigration = 0900;
+					};
+					OBJ_27 = {
+						LastSwiftMigration = 0900;
+					};
+					OBJ_37 = {
+						LastSwiftMigration = 0900;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "DockerProcess" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -213,7 +223,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_16 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,17 +267,17 @@
 		OBJ_36 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_20 /* ProcessRunner */;
-			targetProxy = 3881837E1EC55ED500445D55 /* PBXContainerItemProxy */;
+			targetProxy = 388183971EC5771F00445D55 /* PBXContainerItemProxy */;
 		};
 		OBJ_46 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_20 /* ProcessRunner */;
-			targetProxy = 3881837F1EC55ED500445D55 /* PBXContainerItemProxy */;
+			targetProxy = 388183981EC5771F00445D55 /* PBXContainerItemProxy */;
 		};
 		OBJ_47 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_27 /* DockerProcess */;
-			targetProxy = 388183801EC55ED500445D55 /* PBXContainerItemProxy */;
+			targetProxy = 388183991EC5771F00445D55 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -289,6 +299,8 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = ProcessRunner;
 			};
 			name = Debug;
@@ -310,6 +322,8 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = ProcessRunner;
 			};
 			name = Release;
@@ -331,6 +345,8 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = DockerProcess;
 			};
 			name = Debug;
@@ -375,6 +391,8 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = DockerProcess;
 			};
 			name = Release;
@@ -392,6 +410,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = DockerProcessTests;
 			};
 			name = Debug;
@@ -430,6 +450,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = DockerProcessTests;
 			};
 			name = Release;
