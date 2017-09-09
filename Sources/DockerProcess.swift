@@ -52,6 +52,7 @@ public enum DockerProcessError: Error {
 
 public struct DockerProcess: DockerRunnable {
     
+    public var processRunnable: ProcessRunnable.Type = ProcessRunner.self
     public var launchPath: String = "/usr/local/bin/docker"//"/bin/bash"
     public var command: String? // run, exec, ps
     public var commandOptions: [String]?// --name
@@ -236,7 +237,7 @@ public struct DockerProcess: DockerRunnable {
                 return ProcessResult(output:nil, error:"\(error)", exitCode:-1)//trying to not have this func throw
             }
         }
-        return ProcessRunner.synchronousRun(launchPath, arguments: launchArguments, printOutput: printOutput, outputPrefix: outputPrefix, environment: environment)
+        return self.processRunnable.synchronousRun(launchPath, arguments: launchArguments, printOutput: printOutput, outputPrefix: outputPrefix, environment: environment)
         //        if let error = result.error {
         //            if error.contains("Segmentation fault") {//docker 💩👖, try again
         //                return result
