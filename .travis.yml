@@ -2,7 +2,7 @@ language: swift
 osx_image: xcode9
 sudo: required
 services:
-  - docker
+  - "docker"
 # before_install:
 # - brew update
 # - brew install Caskroom/cask/virtualbox docker docker-machine
