@@ -1,9 +1,12 @@
 language: swift
 osx_image: xcode9
-before_install:
-- brew update
-- brew install Caskroom/cask/virtualbox docker docker-machine
-- brew services start docker-machine
+sudo: required
+services:
+  - docker
+# before_install:
+# - brew update
+# - brew install Caskroom/cask/virtualbox docker docker-machine
+# - brew services start docker-machine
 # - docker-machine create --driver virtualbox default
 - eval "$(docker-machine env default)"
 - docker --version
