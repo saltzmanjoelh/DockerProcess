@@ -4,7 +4,6 @@ osx_image: xcode9
 services:
   - docker
 script:
-  - "ls -al /usr/local/bin/docker"
-  - "whoami"
-  - "sudo swift test"
+  - "which docker"
+  - "docker ps"
   - "swift test"
