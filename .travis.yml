@@ -2,11 +2,17 @@ sudo: required
 language: swift
 osx_image: xcode9
 before_install:
-  - brew update
-  - brew install docker
-  - brew services start docker
-  - eval "$(docker-machine env default)"
-  - docker --version
+  - wget https://s3.amazonaws.com/joelsaltzman.com/Docker.tar
+  - tar -xvf Docker.tar
+  - open Docker.app
+  - while [ ! -f /usr/local/bin/docker ]; do sleep 2; echo "waiting on file"; done; ls -l /usr/local/bin/docker
+  - sleep 5
+  - docker ps
+  # - brew update
+  # - brew install docker
+  # - brew services start docker
+  # - eval "$(docker-machine env default)"
+  # - docker --version
 script:
   - "which docker"
   - "docker ps"
