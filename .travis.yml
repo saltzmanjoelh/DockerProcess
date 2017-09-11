@@ -4,6 +4,7 @@ osx_image: xcode9
 before_install:
   - wget https://s3.amazonaws.com/joelsaltzman.com/Docker.tar
   - tar -xvf Docker.tar
+  - sudo xattr -d -r com.apple.quarantine Docker.app
   - open Docker.app
   - while [ ! -f /usr/local/bin/docker ]; do sleep 2; echo "waiting on file"; done; ls -l /usr/local/bin/docker
   - sleep 5
