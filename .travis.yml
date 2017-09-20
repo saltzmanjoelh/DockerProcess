@@ -2,16 +2,28 @@ sudo: required
 language: swift
 osx_image: xcode9
 before_install:
+  - pwd
+  - ls -al /
+  - ls -al ~
+  - ls -al /Volumes
+  - ls -al /dev/
   - wget https://download.docker.com/mac/stable/DockerToolbox.pkg
-  - sudo installer -verbose -pkg DockerToolbox.pkg -target /
+  - sudo installer -dominfo -pkg DockerToolbox.pkg
+  - sudo installer -volinfo -pkg DockerToolbox.pkg
+  - sudo installer -pkginfo -pkg DockerToolbox.pkg
+  - sudo installer -verboseR -pkg DockerToolbox.pkg -target ~
+  - sudo installer -verboseR -pkg DockerToolbox.pkg -target /
+  - sudo installer -verboseR -pkg DockerToolbox.pkg -target "/Volumes/Macintosh HD"
   # - wget https://s3.amazonaws.com/joelsaltzman.com/Docker.tar
   # - tar -xvf Docker.tar
   # - sudo xattr -d -r com.apple.quarantine Docker.app
   # - open Docker.app
   #! -f /usr/local/bin/docker
   - LIMIT=1; while [ $LIMIT -lt 10 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done; ls -l /usr/local/bin/docker
+  - find Docker.app
   - open /Applications/Docker.app
   - LIMIT=1; while [ $LIMIT -lt 10 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done; docker ps
+  - find / -type f -name Docker.app
   # - sleep 5
   # - docker ps
 script:
