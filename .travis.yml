@@ -2,19 +2,18 @@ sudo: required
 language: swift
 osx_image: xcode9
 before_install:
-  - wget https://s3.amazonaws.com/joelsaltzman.com/Docker.tar
-  - tar -xvf Docker.tar
-  - sudo xattr -d -r com.apple.quarantine Docker.app
-  - open Docker.app
-  - while [ ! -f /usr/local/bin/docker ]; do sleep 2; echo "waiting on file"; done; ls -l /usr/local/bin/docker
-  - sleep 5
-  - docker ps
-  # - brew update
-  # - brew install docker
-  # - brew services start docker
-  # - eval "$(docker-machine env default)"
-  # - docker --version
+  - wget https://download.docker.com/mac/stable/DockerToolbox.pkg
+  - sudo installer -verbose -pkg DockerToolbox.pkg -target /
+  # - wget https://s3.amazonaws.com/joelsaltzman.com/Docker.tar
+  # - tar -xvf Docker.tar
+  # - sudo xattr -d -r com.apple.quarantine Docker.app
+  # - open Docker.app
+  #! -f /usr/local/bin/docker
+  - LIMIT=1; while [ $LIMIT -lt 10 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done; ls -l /usr/local/bin/docker
+  - open /Applications/Docker.app
+  - LIMIT=1; while [ $LIMIT -lt 10 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done; docker ps
+  # - sleep 5
+  # - docker ps
 script:
-  - "which docker"
   - "docker ps"
   - "swift test"
