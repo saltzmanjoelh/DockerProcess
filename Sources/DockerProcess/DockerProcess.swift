@@ -94,10 +94,10 @@ public struct DockerProcess: DockerRunnable {
     }
     
     public func isDockerForMac() throws -> Bool {
-        return true // dropping support for docker toolbox
+        return true //Dropping docker for toolbox support for now
 //        let result = ProcessRunner.synchronousRun("/bin/ls", arguments: ["-al", launchPath], printOutput: false)
 //        if let output = result.output {
-//            return output.contains("group.com.docker")
+//            return output.contains("group.com.docker")//symlink to hyperkit container
 //        }
 //        throw DockerProcessError.typeDetection(message: result.error!)
     }
