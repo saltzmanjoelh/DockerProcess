@@ -8,6 +8,7 @@ before_install:
   - ls -al /dev/
   - mkdir ~/Applications
   - wget https://s3.amazonaws.com/joelsaltzman.com/Docker.tar
+  - tar -xf Docker.tar
   - open Docker.app
   - LIMIT=1; while [ $LIMIT -lt 10 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done;
   - ls -al /usr/local/bin/d*
