@@ -3,17 +3,20 @@ language: swift
 osx_image: xcode9
 before_install:
   - pwd
-  - ls -al /
+  - ls -al /Applications
   - ls -al ~
-  - ls -al /Volumes
   - ls -al /dev/
-  - wget https://download.docker.com/mac/stable/DockerToolbox.pkg
+  - mkdir ~/Applications
+  - wget https://s3.amazonaws.com/joelsaltzman.com/Docker.tar
   - sudo installer -dominfo -pkg DockerToolbox.pkg
   - sudo installer -volinfo -pkg DockerToolbox.pkg
   - sudo installer -pkginfo -pkg DockerToolbox.pkg
   - sudo installer -verboseR -pkg DockerToolbox.pkg -target ~
+  - ls -al ~/Applications/Docker.app
   - sudo installer -verboseR -pkg DockerToolbox.pkg -target /
+  - ls -al /Applications/Docker.app
   - sudo installer -verboseR -pkg DockerToolbox.pkg -target "/Volumes/Macintosh HD"
+  - ls -al /Applications/Docker.app
   # - wget https://s3.amazonaws.com/joelsaltzman.com/Docker.tar
   # - tar -xvf Docker.tar
   # - sudo xattr -d -r com.apple.quarantine Docker.app
