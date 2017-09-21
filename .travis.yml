@@ -2,30 +2,21 @@ sudo: required
 language: swift
 osx_image: xcode9
 before_install:
-  - pwd
-  - ls -al /Applications
-  - ls -al ~
-  - ls -al /dev/
   - mkdir ~/Applications
   - wget https://s3.amazonaws.com/joelsaltzman.com/Docker.tar
   - tar -xf Docker.tar
   - sudo xattr -d -r com.apple.quarantine Docker.app
-  - open Docker.app
-  - LIMIT=1; while [ $LIMIT -lt 10 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done;
+  - mv Docker.app ~/Applications/Docker.app
+  - open ~/Applications/Docker.app
+  - LIMIT=1; while [ $LIMIT -lt 20 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done;
   - ls -al /usr/local/bin/d*
   - wget https://download.docker.com/mac/stable/DockerToolbox.pkg
   - sudo installer -verboseR -pkg DockerToolbox.pkg -target /
-  - LIMIT=1; while [ $LIMIT -lt 10 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done
+  - LIMIT=1; while [ $LIMIT -lt 20 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done
   - ls -al /Applications/
-  - ls -al ~/
-  # - wget https://s3.amazonaws.com/joelsaltzman.com/Docker.tar
-  # - tar -xvf Docker.tar
-  # - sudo xattr -d -r com.apple.quarantine Docker.app
-  # - open Docker.app
-  #! -f /usr/local/bin/docker
-  - find / -type f -name Docker.app
-  # - sleep 5
-  # - docker ps
+  - open "/Applications/Docker Quickstart Terminal"
+  - LIMIT=1; while [ $LIMIT -lt 20 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done
+  - ls -al /usr/local/bin/d*
 script:
   - "docker ps"
   - "swift test"
