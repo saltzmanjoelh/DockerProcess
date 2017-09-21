@@ -16,8 +16,6 @@ before_install:
   - sudo installer -dominfo -pkg DockerToolbox.pkg
   - sudo installer -volinfo -pkg DockerToolbox.pkg
   - sudo installer -pkginfo -pkg DockerToolbox.pkg
-  - sudo installer -verboseR -pkg DockerToolbox.pkg -target ~
-  - ls -al ~/Applications/Docker.app
   - sudo installer -verboseR -pkg DockerToolbox.pkg -target /
   - ls -al /Applications/Docker.app
   - sudo installer -verboseR -pkg DockerToolbox.pkg -target "/Volumes/Macintosh HD"
