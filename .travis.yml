@@ -14,7 +14,7 @@ before_install:
   - sudo installer -verboseR -pkg DockerToolbox.pkg -target /
   - LIMIT=1; while [ $LIMIT -lt 20 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done
   - ls -al /Applications/
-  - open "/Applications/Docker Quickstart Terminal"
+  - open "/Applications/Docker/Docker Quickstart Terminal"
   - LIMIT=1; while [ $LIMIT -lt 20 ]; do sleep 2; echo "waiting on file ($LIMIT)"; ((LIMIT++)); done
   - ls -al /usr/local/bin/d*
 script:
