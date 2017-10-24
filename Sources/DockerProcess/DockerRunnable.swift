@@ -9,7 +9,7 @@
 import Foundation
 import ProcessRunner
 
-public typealias ProcessResult = (output:String?, error:String?, exitCode:Int32)
+//public typealias ProcessResult = (output:String?, error:String?, exitCode:Int32)
 
 public protocol DockerRunnable {
     var processRunnable: ProcessRunnable.Type { get set }
