@@ -200,6 +200,13 @@ public struct DockerProcess: DockerRunnable {
         }
         return images.count == 0
     }
+    public static func containerExists(_ containerName: String) -> Bool {
+        let containerResult = DockerProcess(command:"ps", commandOptions:["-a", "-f", "name=\(containerName)"], commandArgs:nil).launch(printOutput: false)
+        if containerResult.output?.contains(containerName) == true {
+            return true
+        }
+        return false
+    }
     
     /*
      Throws if we can't start default virtual machine
